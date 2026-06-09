@@ -1,6 +1,31 @@
-# Katena - demo de turnos
+# Katena - Next.js
 
-Abrir `index.html` en el navegador para ver la demo.
+Web de turnos para Katena hecha con Next.js y React.
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev
+```
+
+Abrir `http://localhost:3000`.
+
+## Build
+
+```bash
+npm run build
+```
+
+La app está configurada con `output: "export"` para poder publicarla como sitio estático.
+
+## Conectar la web con Google Sheets
+
+Crear un archivo `.env.local` con:
+
+```bash
+NEXT_PUBLIC_SHEET_API_URL="URL_DE_TU_APPS_SCRIPT"
+```
 
 ## Conectar con Google Sheets
 
@@ -11,18 +36,7 @@ Abrir `index.html` en el navegador para ver la demo.
 5. Pegar completo el contenido de `google-apps-script.js`.
 6. Implementar como `Aplicacion web`.
 7. Permitir acceso a `Cualquier persona`.
-8. Copiar la URL publicada.
-9. En `app.js`, reemplazar:
-
-```js
-const SHEET_API_URL = "";
-```
-
-por:
-
-```js
-const SHEET_API_URL = "URL_DE_TU_APPS_SCRIPT";
-```
+8. Copiar la URL publicada y usarla como `NEXT_PUBLIC_SHEET_API_URL`.
 
 ## Manejo de turnos desde Sheets
 

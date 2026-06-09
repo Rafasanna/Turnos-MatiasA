@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
 :root {
   --ink: #10171b;
   --muted: #60717a;
@@ -66,17 +68,13 @@ a {
   transition: transform 180ms ease, color 180ms ease;
 }
 
-.brand img,
-.hero-logo {
-  object-fit: cover;
-  border-radius: 999px;
-  clip-path: circle(49% at 50% 50%);
-}
-
 .brand img {
   width: 42px;
   height: 42px;
   border: 1px solid rgba(12, 98, 131, 0.22);
+  border-radius: 999px;
+  clip-path: circle(49% at 50% 50%);
+  object-fit: cover;
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
@@ -200,8 +198,7 @@ h3 {
   line-height: 1.6;
 }
 
-.hero-actions,
-.contact-links {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -294,19 +291,6 @@ h3 {
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
-.hero-visual:hover .hero-portrait {
-  transform: translateY(-6px);
-  box-shadow: 0 36px 96px rgba(7, 35, 46, 0.28);
-}
-
-.hero-visual:hover .hero-stat-top {
-  transform: translate(5px, -4px);
-}
-
-.hero-visual:hover .hero-stat-bottom {
-  transform: translate(-5px, 4px);
-}
-
 .hero-stat strong {
   font-size: 1.05rem;
 }
@@ -325,6 +309,19 @@ h3 {
 .hero-stat-bottom {
   left: 0;
   bottom: 18%;
+}
+
+.hero-visual:hover .hero-portrait {
+  transform: translateY(-6px);
+  box-shadow: 0 36px 96px rgba(7, 35, 46, 0.28);
+}
+
+.hero-visual:hover .hero-stat-top {
+  transform: translate(5px, -4px);
+}
+
+.hero-visual:hover .hero-stat-bottom {
+  transform: translate(-5px, 4px);
 }
 
 .section,
@@ -361,6 +358,13 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--white);
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.feature:hover {
+  border-color: rgba(12, 98, 131, 0.26);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px rgba(7, 35, 46, 0.12);
 }
 
 .feature-icon {
@@ -382,6 +386,7 @@ h3 {
   object-fit: cover;
   border-radius: 8px;
   box-shadow: var(--shadow);
+  transition: transform 260ms ease, box-shadow 260ms ease, filter 260ms ease;
 }
 
 .gallery img:first-child {
@@ -390,6 +395,12 @@ h3 {
 
 .gallery img:nth-child(2) {
   object-position: center 36%;
+}
+
+.gallery img:hover {
+  transform: translateY(-4px) scale(1.01);
+  filter: saturate(1.05);
+  box-shadow: var(--shadow-hover);
 }
 
 .booking-section {
@@ -411,6 +422,13 @@ h3 {
   border-radius: 8px;
   background: var(--white);
   box-shadow: var(--shadow);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.booking-form:hover {
+  border-color: rgba(12, 98, 131, 0.2);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 
 label,
@@ -585,36 +603,6 @@ textarea:focus,
 
 .form-message.error {
   color: #9b2f22;
-}
-
-.feature {
-  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
-}
-
-.feature:hover {
-  border-color: rgba(12, 98, 131, 0.26);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 48px rgba(7, 35, 46, 0.12);
-}
-
-.gallery img {
-  transition: transform 260ms ease, box-shadow 260ms ease, filter 260ms ease;
-}
-
-.gallery img:hover {
-  transform: translateY(-4px) scale(1.01);
-  filter: saturate(1.05);
-  box-shadow: var(--shadow-hover);
-}
-
-.booking-form {
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-}
-
-.booking-form:hover {
-  border-color: rgba(12, 98, 131, 0.2);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-hover);
 }
 
 .calendar-day,
@@ -807,11 +795,6 @@ textarea {
 
   .hero-content {
     width: calc(100% - 28px);
-  }
-
-  .hero-logo {
-    width: 86px;
-    height: 86px;
   }
 
   .button {
