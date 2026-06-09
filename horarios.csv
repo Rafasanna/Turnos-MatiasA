@@ -1,7 +1,7 @@
 ID,Fecha,Dia,Hora,Servicio,Capacidad,Activo
-2026-06-16-1600,2026-06-16,Martes,16:00,K-Stretch postural,5,TRUE
-2026-06-16-1700,2026-06-16,Martes,17:00,Fuerza funcional,5,TRUE
-2026-06-16-1800,2026-06-16,Martes,18:00,K-Stretch postural,5,TRUE
-2026-06-16-1900,2026-06-16,Martes,19:00,Fuerza funcional,5,TRUE
-2026-06-18-1600,2026-06-18,Jueves,16:00,K-Stretch postural,5,TRUE
-2026-06-18-1800,2026-06-18,Jueves,18:00,Fuerza funcional,5,TRUE
+2026-06-16-1600,2026-06-16,Martes,16:00,K-Stretch postural,4,TRUE
+2026-06-16-1700,2026-06-16,Martes,17:00,Fuerza funcional,4,TRUE
+2026-06-16-1800,2026-06-16,Martes,18:00,K-Stretch postural,4,TRUE
+2026-06-16-1900,2026-06-16,Martes,19:00,Fuerza funcional,4,TRUE
+2026-06-18-1600,2026-06-18,Jueves,16:00,K-Stretch postural,4,TRUE
+2026-06-18-1800,2026-06-18,Jueves,18:00,Fuerza funcional,4,TRUE

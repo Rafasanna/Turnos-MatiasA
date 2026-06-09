@@ -9,7 +9,7 @@ function doGet(event) {
   const action = event.parameter.action || "slots";
 
   if (action === "slots") {
-    return jsonp(event, { ok: true, slots: getSlots() });
+    return jsonp(event, getAgendaPayload());
   }
 
   if (action === "reserve") {
@@ -30,20 +30,43 @@ function createBooking(event) {
   try {
     const params = event.parameter;
     const slotId = params.slotId;
-    const name = params.name;
-    const phone = params.phone;
+    const name = params.nombre || params.name;
+    const phone = params.whatsapp || params.phone;
 
     if (!slotId || !name || !phone) {
       return jsonp(event, { ok: false, message: "Faltan datos obligatorios." });
     }
 
-    const slot = getSlots().find((item) => item.id === slotId);
-    if (!slot || !slot.active || slot.capacity - slot.reserved <= 0) {
-      return jsonp(event, { ok: false, message: "Ese horario ya no esta disponible." });
+    const payload = getAgendaPayload();
+    const slot = payload.slots.find((item) => item.id === slotId);
+    if (!slot || !slot.active) {
+      return jsonp(event, { ok: false, message: "Ese horario no esta disponible." });
+    }
+
+    const occupied = payload.reservations.filter((reservation) => {
+      return reservation.slotId === slotId && isActiveReservation(reservation.estado);
+    }).length;
+
+    if (slot.capacity - occupied <= 0) {
+      return jsonp(event, { ok: false, message: "Ese horario ya no tiene cupo." });
+    }
+
+    const duplicated = payload.reservations.some((reservation) => {
+      return (
+        reservation.slotId === slotId &&
+        isActiveReservation(reservation.estado) &&
+        normalizePhone(reservation.whatsapp) === normalizePhone(phone)
+      );
+    });
+
+    if (duplicated) {
+      return jsonp(event, { ok: false, message: "Ese WhatsApp ya tiene una reserva para este horario." });
     }
 
     const sheet = getSheet(SHEET_NAMES.bookings);
+    const reservationId = `res-${Date.now()}`;
     sheet.appendRow([
+      reservationId,
       new Date(),
       slotId,
       slot.date,
@@ -53,30 +76,29 @@ function createBooking(event) {
       name,
       phone,
       params.email || "",
-      params.notes || "",
-      "CONFIRMADO"
+      params.comentario || params.notes || "",
+      "pendiente"
     ]);
 
-    notifyProfessional(slot, params);
+    notifyProfessional(slot, { name, phone, email: params.email, notes: params.comentario || params.notes });
 
-    return jsonp(event, { ok: true, message: "Reserva confirmada." });
+    return jsonp(event, { ok: true, message: "Reserva registrada." });
   } finally {
     lock.releaseLock();
   }
 }
 
+function getAgendaPayload() {
+  return { ok: true, slots: getSlots(), reservations: getReservations() };
+}
+
 function getSlots() {
   const slotsSheet = getSheet(SHEET_NAMES.slots);
-  const bookingsSheet = getSheet(SHEET_NAMES.bookings);
   const slotRows = rowsToObjects(slotsSheet.getDataRange().getValues());
-  const bookingRows = rowsToObjects(bookingsSheet.getDataRange().getValues());
 
   return slotRows.map((row) => {
     const id = String(row.ID || "").trim();
-    const capacity = Number(row.Capacidad || 0);
-    const reserved = bookingRows.filter((booking) => {
-      return String(booking.SlotID).trim() === id && String(booking.Estado).toUpperCase() === "CONFIRMADO";
-    }).length;
+    const capacity = Number(row.Capacidad || 4);
 
     return {
       id,
@@ -85,10 +107,37 @@ function getSlots() {
       time: formatTime(row.Hora),
       service: String(row.Servicio || "").trim(),
       capacity,
-      reserved,
       active: String(row.Activo).toUpperCase() !== "FALSE"
     };
   });
+}
+
+function getReservations() {
+  const bookingsSheet = getSheet(SHEET_NAMES.bookings);
+  const bookingRows = rowsToObjects(bookingsSheet.getDataRange().getValues());
+
+  return bookingRows.map((row, index) => {
+    return {
+      id: String(row.ID || row.Id || `sheet-${index + 1}`).trim(),
+      slotId: String(row.SlotID || "").trim(),
+      fecha: formatDate(row.Fecha),
+      horario: formatTime(row.Hora),
+      nombre: String(row.Nombre || "").trim(),
+      whatsapp: String(row.WhatsApp || "").trim(),
+      email: String(row.Email || "").trim(),
+      comentario: String(row.Comentario || "").trim(),
+      estado: String(row.Estado || "pendiente").trim().toLowerCase(),
+      createdAt: formatDateTime(row.Creada)
+    };
+  });
+}
+
+function isActiveReservation(status) {
+  return ["pendiente", "confirmado"].includes(String(status || "").toLowerCase());
+}
+
+function normalizePhone(value) {
+  return String(value || "").replace(/[^\d+]/g, "");
 }
 
 function notifyProfessional(slot, params) {
@@ -111,6 +160,13 @@ function notifyProfessional(slot, params) {
 function formatDate(value) {
   if (Object.prototype.toString.call(value) === "[object Date]") {
     return Utilities.formatDate(value, Session.getScriptTimeZone(), "yyyy-MM-dd");
+  }
+  return String(value || "").trim();
+}
+
+function formatDateTime(value) {
+  if (Object.prototype.toString.call(value) === "[object Date]") {
+    return Utilities.formatDate(value, Session.getScriptTimeZone(), "yyyy-MM-dd'T'HH:mm:ss");
   }
   return String(value || "").trim();
 }

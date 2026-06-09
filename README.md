@@ -19,6 +19,10 @@ npm run build
 
 La app está configurada con `output: "export"` para poder publicarla como sitio estático.
 
+## Vista administrativa demo
+
+La ruta `/admin` muestra una vista básica de reservas guardadas en el navegador y permite cambiar estados a `confirmado` o `cancelado`. Es una base para conectar luego con Google Sheets, Supabase o una API con autenticación.
+
 ## Conectar la web con Google Sheets
 
 Crear un archivo `.env.local` con:
@@ -41,7 +45,7 @@ NEXT_PUBLIC_SHEET_API_URL="URL_DE_TU_APPS_SCRIPT"
 ## Manejo de turnos desde Sheets
 
 - Para dar de baja un horario completo, cambiar `Activo` a `FALSE` en la hoja `Horarios`.
-- Para cambiar cupos simultaneos, editar `Capacidad`.
+- Para cambiar cupos simultaneos, editar `Capacidad`. La web está pensada para un máximo de 4 personas por horario.
 - Para cancelar una reserva, cambiar `Estado` de `CONFIRMADO` a `CANCELADO` en `Reservas`.
 - La web no muestra cupos restantes. Solo oculta el horario cuando llega a cero.
 - Cada reserva envia un email automatico a `katenapostural@gmail.com`. Para cambiarlo, editar `PROFESSIONAL_EMAIL` en `google-apps-script.js`.

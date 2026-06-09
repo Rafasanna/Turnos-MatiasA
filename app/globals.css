@@ -1,17 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --ink: #10171b;
-  --muted: #60717a;
-  --line: #d8e4e8;
-  --paper: #f6fbfc;
+  --ink: #17211d;
+  --muted: #647168;
+  --line: #dfe7df;
+  --paper: #f8f6ef;
   --white: #ffffff;
-  --blue: #0c6283;
-  --blue-dark: #08435c;
-  --sky: #c8e8f3;
-  --wood: #a4642f;
-  --shadow: 0 24px 70px rgba(7, 35, 46, 0.18);
-  --shadow-hover: 0 30px 80px rgba(7, 35, 46, 0.24);
+  --blue: #477267;
+  --blue-dark: #223f38;
+  --sky: #dbe9df;
+  --wood: #b4855b;
+  --cream: #f3ede1;
+  --sage: #dce7dd;
+  --shadow: 0 24px 70px rgba(31, 55, 45, 0.13);
+  --shadow-hover: 0 30px 80px rgba(31, 55, 45, 0.2);
 }
 
 * {
@@ -26,7 +28,7 @@ body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
-  background: #f3f8f8;
+  background: var(--paper);
 }
 
 img {
@@ -137,8 +139,8 @@ nav a:hover::after {
   padding: 118px clamp(18px, 7vw, 110px) 72px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 72% 24%, rgba(200, 232, 243, 0.82), rgba(200, 232, 243, 0) 32%),
-    linear-gradient(180deg, #f7fbfa 0%, #edf5f4 100%);
+    radial-gradient(circle at 72% 24%, rgba(220, 231, 221, 0.9), rgba(220, 231, 221, 0) 34%),
+    linear-gradient(180deg, #fffdf7 0%, #f3ede1 100%);
 }
 
 .hero-content {
@@ -191,11 +193,36 @@ h3 {
   font-size: 1.18rem;
 }
 
-.hero-content p:not(.eyebrow) {
+.hero-content p:not(.eyebrow),
+.hero-lead {
   max-width: 610px;
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.6;
+}
+
+.hero-lead {
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  color: #43534b;
+}
+
+.benefit-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 680px;
+  margin: 24px 0 28px;
+}
+
+.benefit-row span {
+  padding: 9px 12px;
+  border: 1px solid rgba(71, 114, 103, 0.18);
+  border-radius: 999px;
+  color: var(--blue-dark);
+  background: rgba(255, 255, 255, 0.64);
+  font-size: 0.88rem;
+  font-weight: 800;
+  box-shadow: 0 8px 22px rgba(31, 55, 45, 0.06);
 }
 
 .hero-actions {
@@ -227,6 +254,12 @@ h3 {
   color: var(--white);
   background: var(--blue);
   box-shadow: 0 12px 30px rgba(12, 98, 131, 0.28);
+}
+
+.hero-cta {
+  min-height: 56px;
+  padding-inline: 28px;
+  font-size: 1.05rem;
 }
 
 .button.primary:hover,
@@ -367,11 +400,53 @@ h3 {
   box-shadow: 0 20px 48px rgba(7, 35, 46, 0.12);
 }
 
+.feature strong {
+  display: block;
+  margin-top: 18px;
+  color: var(--blue-dark);
+  line-height: 1.45;
+}
+
 .feature-icon {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 34px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
   color: var(--wood);
+  background: #f7efe4;
   font-weight: 800;
+}
+
+.audience-section,
+.faq-section {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(24px, 5vw, 70px);
+  padding: clamp(58px, 8vw, 92px) 0;
+}
+
+.audience-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.audience-list li {
+  min-height: 96px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--blue-dark);
+  background: rgba(255, 255, 255, 0.7);
+  font-weight: 800;
+  line-height: 1.45;
+  box-shadow: 0 14px 36px rgba(31, 55, 45, 0.07);
 }
 
 .gallery {
@@ -562,22 +637,50 @@ textarea:focus,
 }
 
 .slot-option span {
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: center;
-  min-height: 46px;
+  justify-content: stretch;
+  gap: 4px;
+  min-height: 68px;
   border: 1px solid #bfd1d8;
   border-radius: 8px;
   color: var(--blue-dark);
   background: #f4fafc;
+  padding: 11px 13px;
   font-weight: 800;
   cursor: pointer;
+}
+
+.slot-option span strong {
+  font-size: 1.05rem;
+}
+
+.slot-option span em {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 0.8rem;
+}
+
+.slot-option.low-stock span {
+  border-color: rgba(180, 133, 91, 0.45);
+  background: #fff8ec;
+}
+
+.slot-option.full span {
+  color: #9ba7a0;
+  border-color: #e6ece8;
+  background: #f3f5f2;
+  cursor: not-allowed;
 }
 
 .slot-option input:checked + span {
   color: var(--white);
   border-color: var(--blue);
   background: var(--blue);
+}
+
+.slot-option input:checked + span em {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .empty-slots {
@@ -605,6 +708,61 @@ textarea:focus,
   color: #9b2f22;
 }
 
+.field-error {
+  color: #9b2f22;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.booking-summary {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid rgba(71, 114, 103, 0.16);
+  border-radius: 12px;
+  background: #fbf8f0;
+}
+
+.booking-summary > strong {
+  color: var(--blue-dark);
+}
+
+.booking-summary dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.booking-summary div {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 10px;
+}
+
+.booking-summary dt {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.booking-summary dd {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.whatsapp-after {
+  display: inline-flex;
+  justify-content: center;
+  min-height: 48px;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: var(--blue-dark);
+  background: var(--sage);
+  font-weight: 900;
+  text-decoration: none;
+}
+
 .calendar-day,
 .slot-option span,
 input,
@@ -627,6 +785,33 @@ textarea {
 .slot-option input:checked + span {
   transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(12, 98, 131, 0.18);
+}
+
+.faq-list {
+  display: grid;
+  gap: 10px;
+}
+
+.faq-list details {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 14px 34px rgba(31, 55, 45, 0.06);
+  overflow: hidden;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  padding: 18px 20px;
+  color: var(--blue-dark);
+  font-weight: 900;
+}
+
+.faq-list p {
+  margin: 0;
+  padding: 0 20px 18px;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .site-footer {
@@ -741,6 +926,87 @@ textarea {
   background: var(--white);
 }
 
+.admin-page {
+  min-height: 100vh;
+  padding: clamp(28px, 6vw, 72px);
+  background: var(--paper);
+}
+
+.admin-shell {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.admin-heading {
+  margin-bottom: 28px;
+}
+
+.admin-heading h1 {
+  font-size: clamp(2.8rem, 8vw, 5.4rem);
+}
+
+.admin-heading p:not(.eyebrow) {
+  max-width: 680px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 780px;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+.admin-table th {
+  color: var(--blue-dark);
+  background: #f7f3e9;
+}
+
+.status-pill {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--blue-dark);
+  background: var(--sage);
+  font-weight: 900;
+}
+
+.status-pill.cancelado {
+  color: #8d2d21;
+  background: #f8ddd8;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-actions button {
+  min-height: 36px;
+  border: 1px solid rgba(71, 114, 103, 0.24);
+  border-radius: 8px;
+  color: var(--blue-dark);
+  background: #f8fbf6;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
 @media (max-width: 840px) {
   .site-header {
     align-items: flex-start;
@@ -767,13 +1033,16 @@ textarea {
 
   .intro,
   .booking-section,
+  .audience-section,
+  .faq-section,
   .site-footer {
     grid-template-columns: 1fr;
   }
 
   .feature-grid,
   .gallery,
-  .form-grid {
+  .form-grid,
+  .audience-list {
     grid-template-columns: 1fr;
   }
 
@@ -799,6 +1068,15 @@ textarea {
 
   .button {
     width: 100%;
+  }
+
+  .benefit-row span {
+    width: 100%;
+  }
+
+  .booking-summary div {
+    grid-template-columns: 1fr;
+    gap: 2px;
   }
 
   .feature {

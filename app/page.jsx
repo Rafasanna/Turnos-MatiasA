@@ -3,100 +3,97 @@
 import { useEffect, useMemo, useState } from "react";
 
 const SHEET_API_URL = process.env.NEXT_PUBLIC_SHEET_API_URL || "";
+const MATIAS_WHATSAPP = "5491133607786";
+const MAX_CAPACITY = 4;
 
 const demoSlots = [
+  { id: "2026-06-16-1600", date: "2026-06-16", day: "Martes", time: "16:00", service: "K-Stretch postural", capacity: 4, active: true },
+  { id: "2026-06-16-1700", date: "2026-06-16", day: "Martes", time: "17:00", service: "Fuerza funcional", capacity: 4, active: true },
+  { id: "2026-06-16-1800", date: "2026-06-16", day: "Martes", time: "18:00", service: "K-Stretch postural", capacity: 4, active: true },
+  { id: "2026-06-16-1900", date: "2026-06-16", day: "Martes", time: "19:00", service: "Fuerza funcional", capacity: 4, active: true },
+  { id: "2026-06-18-1600", date: "2026-06-18", day: "Jueves", time: "16:00", service: "K-Stretch postural", capacity: 4, active: true },
+  { id: "2026-06-18-1800", date: "2026-06-18", day: "Jueves", time: "18:00", service: "Fuerza funcional", capacity: 4, active: true },
+  { id: "2026-06-23-1700", date: "2026-06-23", day: "Martes", time: "17:00", service: "Fuerza funcional", capacity: 4, active: true },
+  { id: "2026-06-25-1900", date: "2026-06-25", day: "Jueves", time: "19:00", service: "K-Stretch postural", capacity: 4, active: true }
+];
+
+const demoReservations = [
   {
-    id: "2026-06-16-1600",
-    date: "2026-06-16",
-    day: "Martes",
-    time: "16:00",
-    service: "K-Stretch postural",
-    capacity: 5,
-    reserved: 1,
-    active: true
+    id: "demo-1",
+    nombre: "Paciente demo",
+    whatsapp: "3515550000",
+    email: "paciente@example.com",
+    comentario: "Primera clase",
+    fecha: "2026-06-16",
+    horario: "16:00",
+    slotId: "2026-06-16-1600",
+    estado: "pendiente",
+    createdAt: "2026-06-09T10:00:00.000Z"
   },
   {
-    id: "2026-06-16-1700",
-    date: "2026-06-16",
-    day: "Martes",
-    time: "17:00",
-    service: "Fuerza funcional",
-    capacity: 5,
-    reserved: 2,
-    active: true
+    id: "demo-2",
+    nombre: "Paciente demo 2",
+    whatsapp: "3515551111",
+    email: "",
+    comentario: "",
+    fecha: "2026-06-18",
+    horario: "16:00",
+    slotId: "2026-06-18-1600",
+    estado: "confirmado",
+    createdAt: "2026-06-09T11:00:00.000Z"
   },
   {
-    id: "2026-06-16-1800",
-    date: "2026-06-16",
-    day: "Martes",
-    time: "18:00",
-    service: "K-Stretch postural",
-    capacity: 5,
-    reserved: 5,
-    active: true
-  },
-  {
-    id: "2026-06-16-1900",
-    date: "2026-06-16",
-    day: "Martes",
-    time: "19:00",
-    service: "Fuerza funcional",
-    capacity: 5,
-    reserved: 0,
-    active: true
-  },
-  {
-    id: "2026-06-18-1600",
-    date: "2026-06-18",
-    day: "Jueves",
-    time: "16:00",
-    service: "K-Stretch postural",
-    capacity: 5,
-    reserved: 3,
-    active: true
-  },
-  {
-    id: "2026-06-18-1800",
-    date: "2026-06-18",
-    day: "Jueves",
-    time: "18:00",
-    service: "Fuerza funcional",
-    capacity: 5,
-    reserved: 0,
-    active: true
-  },
-  {
-    id: "2026-06-23-1700",
-    date: "2026-06-23",
-    day: "Martes",
-    time: "17:00",
-    service: "Fuerza funcional",
-    capacity: 5,
-    reserved: 0,
-    active: true
-  },
-  {
-    id: "2026-06-25-1900",
-    date: "2026-06-25",
-    day: "Jueves",
-    time: "19:00",
-    service: "K-Stretch postural",
-    capacity: 5,
-    reserved: 0,
-    active: true
+    id: "demo-3",
+    nombre: "Paciente demo 3",
+    whatsapp: "3515552222",
+    email: "",
+    comentario: "",
+    fecha: "2026-06-18",
+    horario: "16:00",
+    slotId: "2026-06-18-1600",
+    estado: "pendiente",
+    createdAt: "2026-06-09T11:20:00.000Z"
   }
 ];
 
-const dateFormatter = new Intl.DateTimeFormat("es-AR", {
-  weekday: "long",
-  day: "numeric",
-  month: "long"
-});
+const services = [
+  {
+    icon: "↕",
+    title: "K-Stretch postural",
+    text: "Sesiones guiadas para mejorar movilidad, postura y flexibilidad sin forzar el cuerpo.",
+    result: "Ideal para aliviar tensiones y recuperar eje corporal."
+  },
+  {
+    icon: "↗",
+    title: "Fuerza funcional",
+    text: "Entrenamientos dinámicos, progresivos y adaptados para fortalecer con buena técnica.",
+    result: "Ganás fuerza útil para moverte mejor en tu día a día."
+  },
+  {
+    icon: "4",
+    title: "Grupos reducidos",
+    text: "Hasta 4 personas por horario para sostener atención, correcciones y seguimiento.",
+    result: "Entrenás acompañado, pero con mirada profesional cercana."
+  }
+];
 
-const monthFormatter = new Intl.DateTimeFormat("es-AR", {
-  month: "long",
-  year: "numeric"
-});
+const audience = [
+  "Personas con molestias posturales o tensión recurrente.",
+  "Quienes quieren mejorar movilidad y flexibilidad.",
+  "Personas que buscan entrenar fuerza de forma segura.",
+  "Quienes prefieren grupos reducidos y seguimiento técnico."
+];
+
+const faqs = [
+  ["¿Necesito experiencia previa?", "No. Las clases se adaptan al punto de partida de cada persona."],
+  ["¿Cuánto dura una clase?", "La duración se coordina con Matías según el tipo de entrenamiento y el grupo."],
+  ["¿Cuántas personas hay por grupo?", "Cada horario tiene un máximo de 4 personas."],
+  ["¿Cómo se confirma el turno?", "La reserva queda registrada y Matías te confirma por WhatsApp."],
+  ["¿Puedo cancelar o cambiar mi horario?", "Sí. Si no podés asistir, avisá con anticipación para liberar el cupo."]
+];
+
+const dateFormatter = new Intl.DateTimeFormat("es-AR", { weekday: "long", day: "numeric", month: "long" });
+const monthFormatter = new Intl.DateTimeFormat("es-AR", { month: "long", year: "numeric" });
 
 function createLocalDate(isoDate) {
   const [year, month, day] = isoDate.split("-").map(Number);
@@ -110,22 +107,36 @@ function formatIsoDate(date) {
   return `${year}-${month}-${day}`;
 }
 
-function readDemoSlots() {
-  if (typeof window === "undefined") {
-    return demoSlots.map((slot) => ({ ...slot }));
-  }
-
-  const saved = window.localStorage.getItem("katena-demo-slots");
-  if (!saved) {
-    return demoSlots.map((slot) => ({ ...slot }));
-  }
-
-  const slots = JSON.parse(saved);
-  return slots.every((slot) => slot.date) ? slots : demoSlots.map((slot) => ({ ...slot }));
+function normalizePhone(value) {
+  return String(value || "").replace(/[^\d+]/g, "");
 }
 
-function saveDemoSlots(slots) {
-  window.localStorage.setItem("katena-demo-slots", JSON.stringify(slots));
+function isReasonablePhone(value) {
+  const normalized = normalizePhone(value).replace(/^\+/, "");
+  return normalized.length >= 8 && normalized.length <= 15;
+}
+
+function activeReservation(reservation) {
+  return ["pendiente", "confirmado"].includes(reservation.estado);
+}
+
+function readStorage(key, fallback) {
+  if (typeof window === "undefined") {
+    return fallback;
+  }
+  const saved = window.localStorage.getItem(key);
+  if (!saved) {
+    return fallback;
+  }
+  try {
+    return JSON.parse(saved);
+  } catch {
+    return fallback;
+  }
+}
+
+function saveStorage(key, value) {
+  window.localStorage.setItem(key, JSON.stringify(value));
 }
 
 function requestSheet(params) {
@@ -141,7 +152,7 @@ function requestSheet(params) {
 
     const timer = window.setTimeout(() => {
       cleanup();
-      reject(new Error("La planilla no respondio a tiempo."));
+      reject(new Error("La agenda no respondió a tiempo."));
     }, 12000);
 
     function cleanup() {
@@ -152,16 +163,13 @@ function requestSheet(params) {
 
     window[callbackName] = (data) => {
       cleanup();
-      if (data.ok) {
-        resolve(data);
-      } else {
-        reject(new Error(data.message || "No se pudo completar la operacion."));
-      }
+      if (data.ok) resolve(data);
+      else reject(new Error(data.message || "No se pudo completar la operación."));
     };
 
     script.onerror = () => {
       cleanup();
-      reject(new Error("No se pudo conectar con la planilla."));
+      reject(new Error("No se pudo conectar con la agenda."));
     };
 
     script.src = url.toString();
@@ -169,8 +177,18 @@ function requestSheet(params) {
   });
 }
 
-function getAvailableSlots(slots) {
-  return slots.filter((slot) => slot.active && Number(slot.capacity) - Number(slot.reserved) > 0);
+function calculateSlot(slot, reservations) {
+  const used = reservations.filter((reservation) => reservation.slotId === slot.id && activeReservation(reservation)).length;
+  const capacity = Number(slot.capacity || MAX_CAPACITY);
+  const remaining = Math.max(capacity - used, 0);
+  return { ...slot, capacity, used, remaining, isFull: remaining === 0 };
+}
+
+function slotLabel(slot) {
+  if (slot.isFull) return "Completo";
+  if (slot.remaining === 1) return "Último cupo";
+  if (slot.remaining === slot.capacity) return `${slot.remaining} cupos disponibles`;
+  return `Quedan ${slot.remaining} cupos`;
 }
 
 function Calendar({ availableDates, selectedDate, onSelectDate }) {
@@ -196,12 +214,10 @@ function Calendar({ availableDates, selectedDate, onSelectDate }) {
     const isoDate = formatIsoDate(date);
     const isAvailable = availableSet.has(isoDate);
     const isSelected = isoDate === selectedDate;
-
     cells.push(
       <button
         aria-label={dateFormatter.format(date)}
         className={`calendar-day ${isSelected ? "selected" : ""}`}
-        data-date={isoDate}
         disabled={!isAvailable}
         key={isoDate}
         onClick={() => onSelectDate(isoDate)}
@@ -221,10 +237,10 @@ function Calendar({ availableDates, selectedDate, onSelectDate }) {
       <div className="calendar-weekdays" aria-hidden="true">
         <span>Lun</span>
         <span>Mar</span>
-        <span>Mie</span>
+        <span>Mié</span>
         <span>Jue</span>
         <span>Vie</span>
-        <span>Sab</span>
+        <span>Sáb</span>
         <span>Dom</span>
       </div>
       <div className="calendar-grid" aria-label="Fechas disponibles">
@@ -236,37 +252,52 @@ function Calendar({ availableDates, selectedDate, onSelectDate }) {
 
 export default function Home() {
   const [slots, setSlots] = useState([]);
+  const [reservations, setReservations] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedSlotId, setSelectedSlotId] = useState("");
+  const [formValues, setFormValues] = useState({ nombre: "", whatsapp: "", email: "", comentario: "" });
+  const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
+  const [whatsappLink, setWhatsappLink] = useState("");
 
-  const availableSlots = useMemo(() => getAvailableSlots(slots), [slots]);
-  const availableDates = useMemo(
-    () => [...new Set(availableSlots.map((slot) => slot.date))].sort(),
-    [availableSlots]
+  const hydratedSlots = useMemo(
+    () => slots.filter((slot) => slot.active).map((slot) => calculateSlot(slot, reservations)),
+    [slots, reservations]
   );
+  const availableDates = useMemo(() => [...new Set(hydratedSlots.map((slot) => slot.date))].sort(), [hydratedSlots]);
   const slotsForDate = useMemo(
-    () => availableSlots.filter((slot) => slot.date === selectedDate),
-    [availableSlots, selectedDate]
+    () => hydratedSlots.filter((slot) => slot.date === selectedDate),
+    [hydratedSlots, selectedDate]
+  );
+  const selectedSlot = useMemo(
+    () => hydratedSlots.find((slot) => slot.id === selectedSlotId),
+    [hydratedSlots, selectedSlotId]
   );
 
-  async function loadSlots() {
+  async function loadData() {
     try {
       setMessage("Cargando turnos...");
       setIsError(false);
-      const nextSlots = SHEET_API_URL ? (await requestSheet({ action: "slots" })).slots : readDemoSlots();
-      setSlots(nextSlots);
+      if (SHEET_API_URL) {
+        const data = await requestSheet({ action: "slots" });
+        setSlots(data.slots || []);
+        setReservations(data.reservations || []);
+      } else {
+        setSlots(readStorage("katena-demo-slots", demoSlots));
+        setReservations(readStorage("katena-demo-reservations", demoReservations));
+      }
       setMessage("");
     } catch {
-      setSlots(readDemoSlots());
-      setMessage("Se muestran turnos demo porque no se pudo conectar con la planilla.");
+      setSlots(readStorage("katena-demo-slots", demoSlots));
+      setReservations(readStorage("katena-demo-reservations", demoReservations));
+      setMessage("Se muestran turnos demo porque no se pudo conectar con la agenda.");
       setIsError(true);
     }
   }
 
   useEffect(() => {
-    loadSlots();
+    loadData();
   }, []);
 
   useEffect(() => {
@@ -274,60 +305,106 @@ export default function Home() {
       setSelectedDate("");
       return;
     }
-
     setSelectedDate((current) => (availableDates.includes(current) ? current : availableDates[0]));
   }, [availableDates]);
 
   useEffect(() => {
-    if (!slotsForDate.length) {
+    const selectable = slotsForDate.filter((slot) => !slot.isFull);
+    if (!selectable.length) {
       setSelectedSlotId("");
       return;
     }
-
-    setSelectedSlotId((current) =>
-      slotsForDate.some((slot) => slot.id === current) ? current : slotsForDate[0].id
-    );
+    setSelectedSlotId((current) => (selectable.some((slot) => slot.id === current) ? current : selectable[0].id));
   }, [slotsForDate]);
 
-  async function reserveDemo(slotId) {
-    const currentSlots = readDemoSlots();
-    const slot = currentSlots.find((item) => item.id === slotId);
-    if (!slot || Number(slot.capacity) - Number(slot.reserved) <= 0) {
-      throw new Error("Ese horario ya no tiene cupo.");
-    }
-    slot.reserved = Number(slot.reserved) + 1;
-    saveDemoSlots(currentSlots);
+  function updateField(event) {
+    const { name, value } = event.target;
+    setFormValues((current) => ({ ...current, [name]: value }));
+    setErrors((current) => ({ ...current, [name]: "" }));
+  }
+
+  function validate() {
+    const nextErrors = {};
+    const normalizedPhone = normalizePhone(formValues.whatsapp);
+    if (!selectedDate) nextErrors.date = "Elegí una fecha disponible.";
+    if (!selectedSlotId || !selectedSlot || selectedSlot.isFull) nextErrors.slot = "Elegí un horario con cupo.";
+    if (!formValues.nombre.trim()) nextErrors.nombre = "Ingresá tu nombre y apellido.";
+    if (!formValues.whatsapp.trim()) nextErrors.whatsapp = "Ingresá tu WhatsApp.";
+    else if (!isReasonablePhone(formValues.whatsapp)) nextErrors.whatsapp = "Ingresá un WhatsApp válido.";
+
+    const duplicated = reservations.some((reservation) => {
+      return (
+        reservation.slotId === selectedSlotId &&
+        activeReservation(reservation) &&
+        normalizePhone(reservation.whatsapp) === normalizedPhone
+      );
+    });
+    if (duplicated) nextErrors.whatsapp = "Ese WhatsApp ya tiene una reserva para este horario.";
+
+    setErrors(nextErrors);
+    return Object.keys(nextErrors).length === 0;
+  }
+
+  function buildReservation(slot) {
+    return {
+      id: `res-${Date.now()}`,
+      nombre: formValues.nombre.trim(),
+      whatsapp: normalizePhone(formValues.whatsapp),
+      email: formValues.email.trim(),
+      comentario: formValues.comentario.trim(),
+      fecha: slot.date,
+      horario: slot.time,
+      slotId: slot.id,
+      estado: "pendiente",
+      createdAt: new Date().toISOString()
+    };
+  }
+
+  function buildWhatsappLink(reservation) {
+    const text = [
+      "Hola Matías, quiero reservar un turno:",
+      `Nombre: ${reservation.nombre}`,
+      `WhatsApp: ${reservation.whatsapp}`,
+      `Fecha: ${dateFormatter.format(createLocalDate(reservation.fecha))}`,
+      `Horario: ${reservation.horario}`,
+      `Comentario: ${reservation.comentario || "-"}`
+    ].join("\n");
+    return `https://wa.me/${MATIAS_WHATSAPP}?text=${encodeURIComponent(text)}`;
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
-    const slot = slots.find((item) => item.id === payload.slotId);
-
-    if (!slot) {
-      setMessage("Elegí un horario disponible.");
+    setWhatsappLink("");
+    if (!validate()) {
+      setMessage("Revisá los campos marcados antes de confirmar.");
       setIsError(true);
       return;
     }
 
+    const reservation = buildReservation(selectedSlot);
+
     try {
-      setMessage("Confirmando reserva...");
+      setMessage("Registrando reserva...");
       setIsError(false);
       if (SHEET_API_URL) {
-        await requestSheet({ action: "reserve", ...payload });
+        await requestSheet({ action: "reserve", ...reservation });
+        await loadData();
       } else {
-        await reserveDemo(payload.slotId);
+        const nextReservations = [...reservations, reservation];
+        setReservations(nextReservations);
+        saveStorage("katena-demo-reservations", nextReservations);
       }
-      event.currentTarget.reset();
-      setSelectedDate(slot.date);
-      await loadSlots();
-      setMessage(`Reserva confirmada para ${dateFormatter.format(createLocalDate(slot.date))} a las ${slot.time}.`);
+      setWhatsappLink(buildWhatsappLink(reservation));
+      setFormValues({ nombre: "", whatsapp: "", email: "", comentario: "" });
+      setMessage("Tu reserva fue registrada. Matías te va a confirmar por WhatsApp.");
+      setIsError(false);
     } catch (error) {
       setMessage(error.message);
       setIsError(true);
     }
   }
+
+  const selectedDateText = selectedDate ? dateFormatter.format(createLocalDate(selectedDate)) : "Sin fecha";
 
   return (
     <>
@@ -347,61 +424,65 @@ export default function Home() {
         <section className="hero">
           <div className="hero-content">
             <p className="eyebrow">Katena entrenamiento postural y fuerza</p>
-            <h1>Prof. Matias Aramburu</h1>
-            <p>
-              Un espacio para recuperar movilidad, flexibilidad y confianza corporal con grupos reducidos y
-              acompañamiento profesional.
+            <h1>Prof. Matías Aramburu</h1>
+            <p className="hero-lead">
+              Reservá tu clase de entrenamiento postural K-Stretch o fuerza funcional en grupos reducidos.
             </p>
+            <div className="benefit-row" aria-label="Beneficios">
+              <span>Grupos reducidos</span>
+              <span>Acompañamiento profesional</span>
+              <span>Movilidad y fuerza</span>
+              <span>Trabajo postural</span>
+            </div>
             <div className="hero-actions">
-              <a className="button primary" href="#turnos">
-                Reservar turno
-              </a>
-              <a className="button ghost" href="#propuesta">
-                Ver propuesta
-              </a>
+              <a className="button primary hero-cta" href="#turnos">Reservar turno</a>
+              <a className="button ghost" href="#propuesta">Ver propuesta</a>
             </div>
           </div>
-          <div className="hero-visual" aria-label="Prof. Matias Aramburu">
+          <div className="hero-visual" aria-label="Prof. Matías Aramburu">
             <img className="hero-logo-watermark" src="/assets/logo-katena.jpg" alt="" />
-            <img className="hero-portrait" src="/assets/profesor.jpg" alt="Prof. Matias Aramburu" />
+            <img className="hero-portrait" src="/assets/profesor.jpg" alt="Prof. Matías Aramburu" />
             <div className="hero-stat hero-stat-top">
               <strong>K-Stretch</strong>
               <span>Entrenamiento postural</span>
             </div>
             <div className="hero-stat hero-stat-bottom">
-              <strong>Fuerza</strong>
-              <span>Grupos reducidos</span>
+              <strong>4 personas</strong>
+              <span>Máximo por grupo</span>
             </div>
           </div>
         </section>
 
         <section id="propuesta" className="section intro">
           <div>
-            <p className="eyebrow">Katena</p>
-            <h2>Entrenamiento funcional en grupos reducidos</h2>
+            <p className="eyebrow">Propuesta</p>
+            <h2>Entrená con técnica, cuidado y seguimiento real</h2>
           </div>
           <p>
-            Especializado en entrenamiento postural K-Stretch y entrenamiento funcional de fuerza. Las clases
-            combinan trabajo corporal, movilidad y fuerza para mejorar molestias, dolores y rendimiento cotidiano.
+            Katena combina entrenamiento postural K-Stretch y fuerza funcional para ayudarte a moverte mejor,
+            aliviar tensiones y ganar confianza corporal en un entorno cercano, claro y profesional.
           </p>
         </section>
 
         <section className="feature-grid" aria-label="Servicios">
-          <article className="feature">
-            <span className="feature-icon">01</span>
-            <h3>K-Stretch postural</h3>
-            <p>Trabajo guiado para movilidad, flexibilidad, eje corporal y descarga de tensiones.</p>
-          </article>
-          <article className="feature">
-            <span className="feature-icon">02</span>
-            <h3>Fuerza funcional</h3>
-            <p>Entrenamientos dinamicos y semi personalizados para fortalecer el cuerpo.</p>
-          </article>
-          <article className="feature">
-            <span className="feature-icon">03</span>
-            <h3>Grupos reducidos</h3>
-            <p>Clases con seguimiento cercano para conservar tecnica, calidad y atencion.</p>
-          </article>
+          {services.map((service) => (
+            <article className="feature" key={service.title}>
+              <span className="feature-icon">{service.icon}</span>
+              <h3>{service.title}</h3>
+              <p>{service.text}</p>
+              <strong>{service.result}</strong>
+            </article>
+          ))}
+        </section>
+
+        <section className="section audience-section">
+          <div>
+            <p className="eyebrow">¿Para quién es?</p>
+            <h2>Para personas que quieren entrenar mejor, no solo entrenar más</h2>
+          </div>
+          <ul className="audience-list">
+            {audience.map((item) => <li key={item}>{item}</li>)}
+          </ul>
         </section>
 
         <section className="gallery">
@@ -412,17 +493,17 @@ export default function Home() {
         <section id="turnos" className="section booking-section">
           <div className="booking-copy">
             <p className="eyebrow">Reserva online</p>
-            <h2>Elegir dia y horario</h2>
+            <h2>Elegí fecha y horario</h2>
             <p>
-              Reservá tu clase en pocos pasos. Elegí un horario disponible, dejá tus datos y recibí la confirmacion
-              para coordinar tu entrenamiento.
+              Los turnos quedan sujetos a confirmación por WhatsApp. Si no podés asistir, avisá con anticipación
+              para liberar el cupo.
             </p>
           </div>
 
           <form className="booking-form" onSubmit={handleSubmit}>
             <div className="calendar-field">
               <Calendar availableDates={availableDates} selectedDate={selectedDate} onSelectDate={setSelectedDate} />
-              <input name="date" type="hidden" value={selectedDate} readOnly required />
+              {errors.date ? <small className="field-error">{errors.date}</small> : null}
             </div>
 
             <fieldset>
@@ -430,52 +511,81 @@ export default function Home() {
               <div className="slot-list" aria-live="polite">
                 {slotsForDate.length ? (
                   slotsForDate.map((slot) => (
-                    <label className="slot-option" key={slot.id}>
+                    <label className={`slot-option ${slot.remaining <= 2 && !slot.isFull ? "low-stock" : ""} ${slot.isFull ? "full" : ""}`} key={slot.id}>
                       <input
                         type="radio"
                         name="slotId"
                         value={slot.id}
                         checked={selectedSlotId === slot.id}
+                        disabled={slot.isFull}
                         onChange={() => setSelectedSlotId(slot.id)}
-                        required
                       />
-                      <span>{slot.time}</span>
+                      <span>
+                        <strong>{slot.time}</strong>
+                        <em>{slotLabel(slot)}</em>
+                      </span>
                     </label>
                   ))
                 ) : (
                   <div className="empty-slots">No quedan turnos disponibles para esta fecha.</div>
                 )}
               </div>
+              {errors.slot ? <small className="field-error">{errors.slot}</small> : null}
             </fieldset>
 
             <div className="form-grid">
               <label>
                 Nombre y apellido
-                <input name="name" autoComplete="name" required placeholder="Ej: Maria Perez" />
+                <input name="nombre" value={formValues.nombre} onChange={updateField} autoComplete="name" placeholder="Ej: María Pérez" />
+                {errors.nombre ? <small className="field-error">{errors.nombre}</small> : null}
               </label>
               <label>
                 WhatsApp
-                <input name="phone" autoComplete="tel" required placeholder="Ej: 351 555 1234" />
+                <input name="whatsapp" value={formValues.whatsapp} onChange={updateField} autoComplete="tel" placeholder="Ej: 351 555 1234" />
+                {errors.whatsapp ? <small className="field-error">{errors.whatsapp}</small> : null}
               </label>
             </div>
 
             <label>
               Email
-              <input name="email" type="email" autoComplete="email" placeholder="opcional" />
+              <input name="email" value={formValues.email} onChange={updateField} type="email" autoComplete="email" placeholder="opcional" />
             </label>
 
             <label>
               Comentario
-              <textarea name="notes" rows={3} placeholder="Dolor, objetivo o consulta previa" />
+              <textarea name="comentario" value={formValues.comentario} onChange={updateField} rows={3} placeholder="Dolor, objetivo o consulta previa" />
             </label>
 
-            <button className="button primary submit" type="submit">
-              Confirmar reserva
-            </button>
-            <p className={`form-message ${isError ? "error" : ""}`} role="status">
-              {message}
-            </p>
+            <div className="booking-summary">
+              <strong>Resumen de reserva</strong>
+              <dl>
+                <div><dt>Fecha</dt><dd>{selectedDateText}</dd></div>
+                <div><dt>Horario</dt><dd>{selectedSlot?.time || "Sin horario"}</dd></div>
+                <div><dt>Nombre</dt><dd>{formValues.nombre || "Pendiente"}</dd></div>
+                <div><dt>WhatsApp</dt><dd>{formValues.whatsapp || "Pendiente"}</dd></div>
+                {formValues.comentario ? <div><dt>Comentario</dt><dd>{formValues.comentario}</dd></div> : null}
+              </dl>
+            </div>
+
+            <button className="button primary submit" type="submit">Confirmar reserva</button>
+            <p className={`form-message ${isError ? "error" : ""}`} role="status">{message}</p>
+            {whatsappLink ? <a className="whatsapp-after" href={whatsappLink} target="_blank" rel="noreferrer">Enviar mensaje a Matías por WhatsApp</a> : null}
           </form>
+        </section>
+
+        <section className="section faq-section">
+          <div>
+            <p className="eyebrow">Preguntas frecuentes</p>
+            <h2>Antes de reservar</h2>
+          </div>
+          <div className="faq-list">
+            {faqs.map(([question, answer]) => (
+              <details key={question}>
+                <summary>{question}</summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+          </div>
         </section>
 
         <footer id="contacto" className="site-footer">
@@ -488,17 +598,14 @@ export default function Home() {
               </div>
             </div>
             <p>
-              Reservas y consultas para entrenamiento postural K-Stretch y fuerza funcional en grupos reducidos.
+              También podés consultar disponibilidad por WhatsApp. Reservas y consultas para K-Stretch y fuerza
+              funcional en grupos reducidos.
             </p>
           </div>
           <div className="footer-actions">
             <a href="mailto:katenapostural@gmail.com">katenapostural@gmail.com</a>
-            <a href="https://www.instagram.com/katenapostural" target="_blank" rel="noreferrer">
-              Instagram @katenapostural
-            </a>
-            <a className="footer-whatsapp" href="https://wa.me/5491133607786" target="_blank" rel="noreferrer">
-              WhatsApp
-            </a>
+            <a href="https://www.instagram.com/katenapostural" target="_blank" rel="noreferrer">Instagram @katenapostural</a>
+            <a className="footer-whatsapp" href={`https://wa.me/${MATIAS_WHATSAPP}`} target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
           </div>
         </footer>
       </main>
