@@ -192,7 +192,7 @@ function slotLabel(slot) {
 }
 
 function Calendar({ availableDates, selectedDate, onSelectDate }) {
-  if (!availableDates.length) {
+  if (!availableDates.length || !selectedDate) {
     return <div className="empty-slots">No hay fechas disponibles.</div>;
   }
 
