@@ -567,13 +567,7 @@ export default function Home() {
               <textarea name="comentario" value={formValues.comentario} onChange={updateField} rows={3} placeholder="Dolor, objetivo o consulta previa" />
             </label>
 
-            {!isFormComplete ? (
-              <div className="booking-summary" style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "80px" }}>
-                <p style={{ margin: 0, color: "var(--muted)", fontWeight: "500", textAlign: "center", fontSize: "0.95rem" }}>
-                  Completá tus datos para ver el resumen del turno.
-                </p>
-              </div>
-            ) : (
+            {isFormComplete ? (
               <div className="booking-summary">
                 <strong>Resumen de reserva</strong>
                 <dl>
@@ -584,7 +578,7 @@ export default function Home() {
                   {formValues.comentario ? <div><dt>Comentario</dt><dd>{formValues.comentario}</dd></div> : null}
                 </dl>
               </div>
-            )}
+            ) : null}
 
             <button className="button primary submit" type="submit" disabled={!isFormComplete}>
               Reservar turno
