@@ -1,19 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --ink: #17211d;
-  --muted: #647168;
-  --line: #dfe7df;
-  --paper: #f8f6ef;
+  --ink: #152936;
+  --muted: #607484;
+  --line: #dbe8ef;
+  --paper: #f5f9fc;
   --white: #ffffff;
-  --blue: #477267;
-  --blue-dark: #223f38;
-  --sky: #dbe9df;
-  --wood: #b4855b;
-  --cream: #f3ede1;
-  --sage: #dce7dd;
-  --shadow: 0 24px 70px rgba(31, 55, 45, 0.13);
-  --shadow-hover: 0 30px 80px rgba(31, 55, 45, 0.2);
+  --blue: #4b89b6;
+  --blue-dark: #14394f;
+  --sky: #dceff8;
+  --wood: #5f94ba;
+  --cream: #eaf4f9;
+  --sage: #dceff8;
+  --shadow: 0 24px 70px rgba(18, 58, 80, 0.13);
+  --shadow-hover: 0 30px 80px rgba(18, 58, 80, 0.2);
 }
 
 * {
@@ -29,6 +29,7 @@ body {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
   background: var(--paper);
+  overflow-x: hidden;
 }
 
 img {
@@ -139,8 +140,8 @@ nav a:hover::after {
   padding: 118px clamp(18px, 7vw, 110px) 72px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 72% 24%, rgba(220, 231, 221, 0.9), rgba(220, 231, 221, 0) 34%),
-    linear-gradient(180deg, #fffdf7 0%, #f3ede1 100%);
+    radial-gradient(circle at 72% 24%, rgba(197, 227, 242, 0.95), rgba(197, 227, 242, 0) 34%),
+    linear-gradient(180deg, #fbfdff 0%, #eaf4f9 100%);
 }
 
 .hero-content {
@@ -203,32 +204,14 @@ h3 {
 
 .hero-lead {
   font-size: clamp(1.15rem, 2.2vw, 1.45rem);
-  color: #43534b;
-}
-
-.benefit-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  max-width: 680px;
-  margin: 24px 0 28px;
-}
-
-.benefit-row span {
-  padding: 9px 12px;
-  border: 1px solid rgba(71, 114, 103, 0.18);
-  border-radius: 999px;
-  color: var(--blue-dark);
-  background: rgba(255, 255, 255, 0.64);
-  font-size: 0.88rem;
-  font-weight: 800;
-  box-shadow: 0 8px 22px rgba(31, 55, 45, 0.06);
+  color: #496777;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  margin-top: 28px;
 }
 
 .button {
@@ -416,7 +399,7 @@ h3 {
   height: 44px;
   border-radius: 999px;
   color: var(--wood);
-  background: #f7efe4;
+  background: #e8f5fb;
   font-weight: 800;
 }
 
@@ -446,7 +429,7 @@ h3 {
   background: rgba(255, 255, 255, 0.7);
   font-weight: 800;
   line-height: 1.45;
-  box-shadow: 0 14px 36px rgba(31, 55, 45, 0.07);
+  box-shadow: 0 14px 36px rgba(18, 58, 80, 0.07);
 }
 
 .gallery {
@@ -630,6 +613,10 @@ textarea:focus,
   gap: 10px;
 }
 
+.slot-option {
+  position: relative;
+}
+
 .slot-option input {
   position: absolute;
   opacity: 0;
@@ -718,9 +705,9 @@ textarea:focus,
   display: grid;
   gap: 12px;
   padding: 18px;
-  border: 1px solid rgba(71, 114, 103, 0.16);
+  border: 1px solid rgba(75, 137, 182, 0.18);
   border-radius: 12px;
-  background: #fbf8f0;
+  background: #f2f8fc;
 }
 
 .booking-summary > strong {
@@ -796,7 +783,7 @@ textarea {
   border: 1px solid var(--line);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.76);
-  box-shadow: 0 14px 34px rgba(31, 55, 45, 0.06);
+  box-shadow: 0 14px 34px rgba(18, 58, 80, 0.06);
   overflow: hidden;
 }
 
@@ -998,10 +985,10 @@ textarea {
 
 .admin-actions button {
   min-height: 36px;
-  border: 1px solid rgba(71, 114, 103, 0.24);
+  border: 1px solid rgba(75, 137, 182, 0.28);
   border-radius: 8px;
   color: var(--blue-dark);
-  background: #f8fbf6;
+  background: #f4fafc;
   font: inherit;
   font-weight: 800;
   cursor: pointer;
@@ -1009,26 +996,75 @@ textarea {
 
 @media (max-width: 840px) {
   .site-header {
-    align-items: flex-start;
+    top: 10px;
+    left: 12px;
+    right: 12px;
+    min-height: 62px;
+    padding: 10px 12px;
   }
 
   nav {
-    gap: 12px;
-    font-size: 0.8rem;
+    gap: 10px;
+    font-size: 0.78rem;
   }
 
   .hero {
     min-height: auto;
     grid-template-columns: 1fr;
-    padding-top: 104px;
+    gap: 26px;
+    padding: 96px 18px 46px;
   }
 
   .hero-content {
+    width: 100%;
     margin: 0;
   }
 
+  h1 {
+    max-width: 430px;
+    margin-bottom: 18px;
+    font-size: clamp(3rem, 13vw, 4.4rem);
+    line-height: 0.94;
+  }
+
+  .hero-lead {
+    max-width: 420px;
+    font-size: 1.08rem;
+    line-height: 1.55;
+  }
+
   .hero-visual {
-    min-height: 520px;
+    min-height: auto;
+    padding: 10px 0 0;
+    place-items: start center;
+  }
+
+  .hero-logo-watermark {
+    width: min(360px, 82vw);
+    opacity: 0.16;
+  }
+
+  .hero-portrait {
+    width: min(640px, 100%);
+    height: min(520px, 78vh);
+    border-width: 10px;
+    border-radius: 32px;
+    object-position: center top;
+  }
+
+  .hero-stat {
+    min-width: 150px;
+    padding: 12px 14px;
+  }
+
+  .hero-stat-top {
+    top: 8%;
+    right: 4%;
+  }
+
+  .hero-stat-bottom {
+    left: 4%;
+    bottom: 8%;
   }
 
   .intro,
@@ -1053,25 +1089,100 @@ textarea {
 
 @media (max-width: 560px) {
   .site-header {
-    min-height: 70px;
+    min-height: 58px;
     gap: 10px;
-    padding: 12px 14px;
+    padding: 9px 10px;
+    max-width: calc(100vw - 24px);
   }
 
   .brand span {
     display: none;
   }
 
-  .hero-content {
-    width: calc(100% - 28px);
+  .brand img {
+    width: 40px;
+    height: 40px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .hero {
+    padding: 88px 16px 38px;
+  }
+
+  .eyebrow {
+    margin-bottom: 10px;
+    font-size: 0.72rem;
+  }
+
+  h1 {
+    max-width: 100%;
+    font-size: clamp(2.65rem, 13vw, 3.45rem);
+    line-height: 0.98;
+  }
+
+  h2 {
+    font-size: clamp(1.85rem, 10vw, 2.55rem);
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .hero-content .hero-lead {
+    max-width: 340px;
+    font-size: 1rem;
   }
 
   .button {
     width: 100%;
   }
 
-  .benefit-row span {
-    width: 100%;
+  .hero-portrait {
+    height: min(430px, 70vh);
+    border-radius: 28px;
+  }
+
+  .hero-stat-top {
+    display: none;
+  }
+
+  .hero-stat-bottom {
+    left: 10px;
+  }
+
+  .hero-stat {
+    min-width: 136px;
+    padding: 10px 12px;
+  }
+
+  .hero-stat strong {
+    font-size: 0.92rem;
+  }
+
+  .hero-stat span {
+    font-size: 0.72rem;
+  }
+
+  .section,
+  .feature-grid,
+  .gallery,
+  .site-footer {
+    width: min(100% - 28px, 1160px);
+  }
+
+  .intro,
+  .booking-section,
+  .audience-section,
+  .faq-section {
+    padding-block: 48px;
+  }
+
+  .booking-form {
+    padding: 18px;
   }
 
   .booking-summary div {

@@ -70,10 +70,10 @@ const services = [
     result: "Ganás fuerza útil para moverte mejor en tu día a día."
   },
   {
-    icon: "4",
-    title: "Grupos reducidos",
-    text: "Hasta 4 personas por horario para sostener atención, correcciones y seguimiento.",
-    result: "Entrenás acompañado, pero con mirada profesional cercana."
+    icon: "✓",
+    title: "Reserva simple",
+    text: "Elegís fecha y horario desde la web y dejás tus datos para coordinar la clase.",
+    result: "Matías te confirma el turno por WhatsApp."
   }
 ];
 
@@ -81,13 +81,13 @@ const audience = [
   "Personas con molestias posturales o tensión recurrente.",
   "Quienes quieren mejorar movilidad y flexibilidad.",
   "Personas que buscan entrenar fuerza de forma segura.",
-  "Quienes prefieren grupos reducidos y seguimiento técnico."
+  "Quienes quieren reservar un horario concreto sin ida y vuelta innecesaria."
 ];
 
 const faqs = [
   ["¿Necesito experiencia previa?", "No. Las clases se adaptan al punto de partida de cada persona."],
   ["¿Cuánto dura una clase?", "La duración se coordina con Matías según el tipo de entrenamiento y el grupo."],
-  ["¿Cuántas personas hay por grupo?", "Cada horario tiene un máximo de 4 personas."],
+  ["¿Cómo elijo mi horario?", "Seleccionás una fecha disponible, elegís el horario y completás tus datos."],
   ["¿Cómo se confirma el turno?", "La reserva queda registrada y Matías te confirma por WhatsApp."],
   ["¿Puedo cancelar o cambiar mi horario?", "Sí. Si no podés asistir, avisá con anticipación para liberar el cupo."]
 ];
@@ -187,8 +187,7 @@ function calculateSlot(slot, reservations) {
 function slotLabel(slot) {
   if (slot.isFull) return "Completo";
   if (slot.remaining === 1) return "Último cupo";
-  if (slot.remaining === slot.capacity) return `${slot.remaining} cupos disponibles`;
-  return `Quedan ${slot.remaining} cupos`;
+  return "Disponible";
 }
 
 function Calendar({ availableDates, selectedDate, onSelectDate }) {
@@ -426,14 +425,8 @@ export default function Home() {
             <p className="eyebrow">Katena entrenamiento postural y fuerza</p>
             <h1>Prof. Matías Aramburu</h1>
             <p className="hero-lead">
-              Reservá tu clase de entrenamiento postural K-Stretch o fuerza funcional en grupos reducidos.
+              Elegí día y horario para reservar tu turno online.
             </p>
-            <div className="benefit-row" aria-label="Beneficios">
-              <span>Grupos reducidos</span>
-              <span>Acompañamiento profesional</span>
-              <span>Movilidad y fuerza</span>
-              <span>Trabajo postural</span>
-            </div>
             <div className="hero-actions">
               <a className="button primary hero-cta" href="#turnos">Reservar turno</a>
               <a className="button ghost" href="#propuesta">Ver propuesta</a>
@@ -447,8 +440,8 @@ export default function Home() {
               <span>Entrenamiento postural</span>
             </div>
             <div className="hero-stat hero-stat-bottom">
-              <strong>4 personas</strong>
-              <span>Máximo por grupo</span>
+              <strong>Reserva online</strong>
+              <span>Fecha y horario</span>
             </div>
           </div>
         </section>
@@ -599,7 +592,7 @@ export default function Home() {
             </div>
             <p>
               También podés consultar disponibilidad por WhatsApp. Reservas y consultas para K-Stretch y fuerza
-              funcional en grupos reducidos.
+              funcional.
             </p>
           </div>
           <div className="footer-actions">
