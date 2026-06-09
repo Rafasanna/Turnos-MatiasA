@@ -683,6 +683,21 @@ textarea:focus,
   font-size: 1rem;
 }
 
+.submit:disabled {
+  background: #c5d2d8;
+  color: #f4fafc;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit:disabled:hover {
+  background: #c5d2d8;
+  color: #f4fafc;
+  transform: none;
+  box-shadow: none;
+}
+
 .form-message {
   min-height: 24px;
   margin: 0;
@@ -1089,19 +1104,21 @@ textarea {
 
 @media (max-width: 560px) {
   .site-header {
-    min-height: 58px;
+    min-height: 68px;
     gap: 10px;
     padding: 9px 10px;
     max-width: calc(100vw - 24px);
+    justify-content: center;
   }
 
   .brand span {
-    display: none;
+    display: inline;
+    font-size: 1.35rem;
   }
 
   .brand img {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
   }
 
   nav {

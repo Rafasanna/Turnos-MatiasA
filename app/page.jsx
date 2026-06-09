@@ -274,6 +274,17 @@ export default function Home() {
     [hydratedSlots, selectedSlotId]
   );
 
+  const isFormComplete = useMemo(() => {
+    return !!(
+      selectedDate &&
+      selectedSlotId &&
+      selectedSlot &&
+      formValues.nombre.trim() &&
+      formValues.whatsapp.trim()
+    );
+  }, [selectedDate, selectedSlotId, selectedSlot, formValues.nombre, formValues.whatsapp]);
+
+
   async function loadData() {
     try {
       setMessage("Cargando turnos...");
@@ -360,15 +371,20 @@ export default function Home() {
   }
 
   function buildWhatsappLink(reservation) {
-    const text = [
-      "Hola Matías, quiero reservar un turno:",
+    const lines = [
+      "Hola, quiero reservar un turno.",
+      "",
       `Nombre: ${reservation.nombre}`,
       `WhatsApp: ${reservation.whatsapp}`,
       `Fecha: ${dateFormatter.format(createLocalDate(reservation.fecha))}`,
-      `Horario: ${reservation.horario}`,
-      `Comentario: ${reservation.comentario || "-"}`
-    ].join("\n");
-    return `https://wa.me/${MATIAS_WHATSAPP}?text=${encodeURIComponent(text)}`;
+      `Horario: ${reservation.horario}`
+    ];
+    if (reservation.comentario && reservation.comentario.trim()) {
+      lines.push(`Comentario: ${reservation.comentario.trim()}`);
+    }
+    lines.push("", "Quedo a la espera de la confirmación.");
+    const text = lines.join("\n");
+    return `https://wa.me/5491133607786?text=${encodeURIComponent(text)}`;
   }
 
   async function handleSubmit(event) {
@@ -393,7 +409,9 @@ export default function Home() {
         setReservations(nextReservations);
         saveStorage("katena-demo-reservations", nextReservations);
       }
-      setWhatsappLink(buildWhatsappLink(reservation));
+      const link = buildWhatsappLink(reservation);
+      setWhatsappLink(link);
+      window.open(link, "_blank", "noopener,noreferrer");
       setFormValues({ nombre: "", whatsapp: "", email: "", comentario: "" });
       setMessage("Tu reserva fue registrada. Matías te va a confirmar por WhatsApp.");
       setIsError(false);
@@ -549,18 +567,28 @@ export default function Home() {
               <textarea name="comentario" value={formValues.comentario} onChange={updateField} rows={3} placeholder="Dolor, objetivo o consulta previa" />
             </label>
 
-            <div className="booking-summary">
-              <strong>Resumen de reserva</strong>
-              <dl>
-                <div><dt>Fecha</dt><dd>{selectedDateText}</dd></div>
-                <div><dt>Horario</dt><dd>{selectedSlot?.time || "Sin horario"}</dd></div>
-                <div><dt>Nombre</dt><dd>{formValues.nombre || "Pendiente"}</dd></div>
-                <div><dt>WhatsApp</dt><dd>{formValues.whatsapp || "Pendiente"}</dd></div>
-                {formValues.comentario ? <div><dt>Comentario</dt><dd>{formValues.comentario}</dd></div> : null}
-              </dl>
-            </div>
+            {!isFormComplete ? (
+              <div className="booking-summary" style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "80px" }}>
+                <p style={{ margin: 0, color: "var(--muted)", fontWeight: "500", textAlign: "center", fontSize: "0.95rem" }}>
+                  Completá tus datos para ver el resumen del turno.
+                </p>
+              </div>
+            ) : (
+              <div className="booking-summary">
+                <strong>Resumen de reserva</strong>
+                <dl>
+                  <div><dt>Fecha</dt><dd>{selectedDateText}</dd></div>
+                  <div><dt>Horario</dt><dd>{selectedSlot?.time || "Sin horario"}</dd></div>
+                  <div><dt>Nombre</dt><dd>{formValues.nombre || "Pendiente"}</dd></div>
+                  <div><dt>WhatsApp</dt><dd>{formValues.whatsapp || "Pendiente"}</dd></div>
+                  {formValues.comentario ? <div><dt>Comentario</dt><dd>{formValues.comentario}</dd></div> : null}
+                </dl>
+              </div>
+            )}
 
-            <button className="button primary submit" type="submit">Confirmar reserva</button>
+            <button className="button primary submit" type="submit" disabled={!isFormComplete}>
+              Reservar turno
+            </button>
             <p className={`form-message ${isError ? "error" : ""}`} role="status">{message}</p>
             {whatsappLink ? <a className="whatsapp-after" href={whatsappLink} target="_blank" rel="noreferrer">Enviar mensaje a Matías por WhatsApp</a> : null}
           </form>
