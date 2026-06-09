@@ -77,6 +77,7 @@ a {
   height: 42px;
   border: 1px solid rgba(12, 98, 131, 0.22);
   border-radius: 999px;
+  clip-path: circle(50% at 50% 50%);
   object-fit: cover;
   transition: transform 220ms ease, box-shadow 220ms ease;
 }
@@ -866,6 +867,7 @@ textarea {
   object-fit: cover;
   border: 2px solid rgba(255, 255, 255, 0.28);
   border-radius: 999px;
+  clip-path: circle(50% at 50% 50%);
 }
 
 .site-footer .eyebrow {
