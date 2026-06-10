@@ -14,7 +14,10 @@ export default function Header() {
             <a href={item.href} key={item.href}>{item.label}</a>
           ))}
         </nav>
-        <a className="header-cta" href={headerCta.href}>{headerCta.label}</a>
+        <a className="header-cta" href={headerCta.href}>
+          <span className="header-cta-desktop">{headerCta.label}</span>
+          <span className="header-cta-mobile">Reservar clase</span>
+        </a>
         <details className="mobile-menu">
           <summary aria-label="Abrir menu de navegacion">
             <span aria-hidden="true"></span>

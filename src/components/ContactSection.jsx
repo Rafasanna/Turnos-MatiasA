@@ -1,39 +1,97 @@
 import Image from "next/image";
-import { contact, whatsappUrl } from "../data/site";
+import { contact, whatsappUrl, navItems } from "../data/site";
 
 export default function ContactSection() {
   return (
     <footer className="site-footer" id="contacto">
-      <div className="footer-main">
-        <div className="footer-brand">
-          <Image src="/assets/logo-katena.jpg" alt="" width={76} height={76} />
-          <div>
-            <p className="eyebrow">Contacto</p>
-            <h2>Katena Entrenamiento Postural y Fuerza</h2>
+      <div className="footer-container">
+        <div className="footer-grid">
+          {/* Columna 1: Brand */}
+          <div className="footer-column brand-column">
+            <div className="footer-brand">
+              <Image 
+                src="/assets/logo-katena.jpg" 
+                alt="Logo Katena" 
+                width={48} 
+                height={48} 
+              />
+              <span>Katena</span>
+            </div>
+            <p className="footer-tagline">
+              Entrenamiento postural, fuerza y movilidad. Sostené una práctica consciente, cuidada y adaptada a vos.
+            </p>
+          </div>
+
+          {/* Columna 2: Navegación rápida */}
+          <div className="footer-column">
+            <h4>Navegación</h4>
+            <nav className="footer-nav" aria-label="Navegación del pie de página">
+              {navItems.map((item) => (
+                <a href={item.href} key={item.href}>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Columna 3: Contacto */}
+          <div className="footer-column">
+            <h4>Contacto</h4>
+            <ul className="footer-contact-list">
+              <li>
+                <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className="footer-link">
+                  <svg className="footer-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                  </svg>
+                  <span>WhatsApp</span>
+                </a>
+              </li>
+              <li>
+                <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer" className="footer-link">
+                  <svg className="footer-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                  </svg>
+                  <span>{contact.instagramHandle}</span>
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${contact.email}`} className="footer-link">
+                  <svg className="footer-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  <span>{contact.email}</span>
+                </a>
+              </li>
+              <li>
+                <a href={contact.mapsUrl} target="_blank" rel="noopener noreferrer" className="footer-link">
+                  <svg className="footer-link-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span>Cómo llegar / Ubicación</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Columna 4: Reservas */}
+          <div className="footer-column cta-column">
+            <h4>Reservas</h4>
+            <p className="footer-cta-text">
+              Gestioná tus clases, horarios y asistencia desde CrossfyApp.
+            </p>
+            <a className="button primary footer-cta-btn" href={contact.crossfyUrl} target="_blank" rel="noopener noreferrer">
+              Reservar clase
+            </a>
           </div>
         </div>
-        <p>
-          Escribí para consultar por actividades, disponibilidad o para coordinar tu primera clase.
-        </p>
-        <p className="footer-note">
-          Las reservas se gestionan desde CrossfyApp. Si tenés dudas antes de reservar, podés escribir por WhatsApp.
-        </p>
-      </div>
-      <div className="footer-contact-panel" aria-label="Canales de contacto">
-        <div className="footer-primary-actions">
-          <a className="footer-primary-link" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
-            <span>Consultar por WhatsApp</span>
-            <small>Responder consultas antes de reservar</small>
-          </a>
-          <a className="footer-primary-link secondary" href={contact.crossfyUrl} target="_blank" rel="noopener noreferrer">
-            <span>Reservar por CrossfyApp</span>
-            <small>Ver horarios y confirmar tu lugar</small>
-          </a>
-        </div>
-        <div className="footer-secondary-links">
-          <a href={contact.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href={`mailto:${contact.email}`} target="_blank" rel="noopener noreferrer">{contact.email}</a>
-          <a href={contact.mapsUrl} target="_blank" rel="noopener noreferrer">Google Maps</a>
+
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} Katena. Todos los derechos reservados.</p>
+          <p>Acompañamiento personalizado • Buenos Aires</p>
         </div>
       </div>
     </footer>

@@ -7,7 +7,7 @@ export default function ServicesSection() {
       <SectionTitle
         eyebrow="Actividades"
         title="Actividades disponibles"
-        text="Clases y espacios de entrenamiento que podés consultar o reservar desde CrossfyApp."
+        text="Clases y espacios de entrenamiento que podés consultar o reservar."
       />
       <div className="activities-grid">
         {activities.map((activity) => (
@@ -19,7 +19,7 @@ export default function ServicesSection() {
             <h3>{activity.title}</h3>
             <p>{activity.description}</p>
             <a className="activity-booking" href={activity.bookingUrl} target="_blank" rel="noopener noreferrer">
-              Reservar
+              Reservar clase
             </a>
           </article>
         ))}

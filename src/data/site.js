@@ -1,8 +1,9 @@
 export const contact = {
   whatsappNumber: "5491133607786",
   instagramUrl: "https://www.instagram.com/katenapostural",
+  instagramHandle: "@katenapostural",
   email: "katenapostural@gmail.com",
-  location: "Katena, Córdoba",
+  location: "Buenos Aires",
   mapsUrl: "https://maps.app.goo.gl/ozgapkPzz2RAR6ME9",
   crossfyUrl: "https://crossfyapp.com/"
 };
@@ -16,7 +17,7 @@ export const siteInfo = {
   heroEyebrow: "Katena entrenamiento postural y fuerza",
   heroTitle: "Katena",
   heroText:
-    "Entrenamiento postural, fuerza y movilidad con acompañamiento profesional del Prof. Matías Aramburu."
+    "Entrenamiento postural, fuerza y movilidad con acompañamiento profesional."
 };
 
 export const professionalSummary = {
@@ -76,20 +77,12 @@ export const activities = [
     status: "available"
   },
   {
-    title: "Entrenamiento Fuerza",
-    description:
-      "Espacio de entrenamiento de fuerza sujeto a disponibilidad. Consultar horarios desde la app.",
-    bookingUrl: contact.crossfyUrl,
-    status: "standby",
-    badge: "Consultar disponibilidad"
-  },
-  {
     title: "K-Stretch®",
     description:
       "Espacio de K-Stretch® sujeto a disponibilidad. Consultar horarios desde la app.",
     bookingUrl: contact.crossfyUrl,
     status: "standby",
-    badge: "Consultar disponibilidad"
+    badge: "Sujeto a disponibilidad"
   },
   {
     title: "Fuerza",
@@ -104,18 +97,38 @@ export const activities = [
 export const testimonials = [
   {
     quote:
-      "Testimonio a completar con una experiencia real de una persona que entrena en Katena.",
-    author: "Alumno/a de Katena"
+      "Excelente lugar e impecable la atención. Matías está pendiente para que puedas hacer los ejercicios con la técnica correcta. Una clase dinámica que se adapta al nivel de cada persona y salís renovado. ¡100% recomendado!",
+    author: "Alumno/a de Katena",
+    rating: 5,
+    time: "Hace 3 meses"
   },
   {
     quote:
-      "Espacio reservado para una opinión breve sobre el acompañamiento y la propuesta de trabajo.",
-    author: "Testimonio pendiente"
+      "Excelente profesional Matías A. Talleres de fuerza y postura, atención personalizada, dedicación y cuidado responsable. Recomiendo para quienes estamos cruzando los 50 y tenemos actividades sedentarias o problemas posturales.",
+    author: "Alumno/a de Katena",
+    rating: 5,
+    time: "Hace 3 meses"
   },
   {
     quote:
-      "Más adelante se puede reemplazar este texto por una reseña real del cliente.",
-    author: "Experiencia a completar"
+      "Arranqué esta última semana y ya noté mejoras en mi postura. El profesor Matias siempre muy atento, escucha y se toma el tiempo para explicar cada ejercicio. Espacio cómodo y bien iluminado. Recomendadísimo.",
+    author: "Alumno/a de Katena",
+    rating: 5,
+    time: "Hace 3 meses"
+  },
+  {
+    quote:
+      "Mati, un excelente profesional. Empático, dedicado, creativo, ameno.. Cuida a cada uno de sus alumnos y verifica que hagan los ejercicios correctamente. Acercate y comprobalo por ti mismo: súper recomendable.",
+    author: "Alumno/a de Katena",
+    rating: 5,
+    time: "Hace 3 meses"
+  },
+  {
+    quote:
+      "Las clases de Matias 10/10! El lugar también me encanta que tenga luz natural. Recomiendo la clase de K-Stretch® sea por algún dolor o para tener mayor bienestar. La clase de fuerza también la recomiendo, mati tiene mucha claridad para explicar y acompañar los ejercicios escuchando a tu cuerpo.",
+    author: "Alumno/a de Katena",
+    rating: 5,
+    time: "Hace 4 meses"
   }
 ];
 
@@ -152,6 +165,13 @@ export const faqs = [
   }
 ];
 
+export const kstretchWhatsappMessage =
+  "Hola Matías, vi la página de Katena y quería consultar por K-Stretch®.";
+
 export function whatsappUrl() {
   return `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 }
+
+export function kstretchWhatsappUrl() {
+  return `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(kstretchWhatsappMessage)}`;
+} 
