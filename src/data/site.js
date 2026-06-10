@@ -17,7 +17,7 @@ export const siteInfo = {
   heroEyebrow: "Katena entrenamiento postural y fuerza",
   heroTitle: "Katena",
   heroText:
-    "Entrenamiento postural, fuerza y movilidad con acompañamiento profesional."
+  "Clases pensadas para mejorar tu postura, movilidad y bienestar, con acompañamiento profesional en cada proceso."
 };
 
 export const professionalSummary = {

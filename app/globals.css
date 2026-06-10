@@ -945,6 +945,36 @@ h3 {
   margin: 0;
 }
 
+.footer-legal {
+  display: grid;
+  gap: 6px;
+  max-width: 900px;
+  padding-top: 14px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.footer-legal details {
+  margin: 0;
+}
+
+.footer-legal summary {
+  width: fit-content;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+}
+
+.footer-legal summary:hover,
+.footer-legal summary:focus-visible {
+  color: var(--sky);
+}
+
+.footer-legal p {
+  margin: 6px 0 0;
+}
+
 :focus-visible {
   outline: 3px solid rgba(75, 137, 182, 0.42);
   outline-offset: 3px;
@@ -1734,4 +1764,3 @@ h3 {
     line-height: 1.55;
   }
 }
-
