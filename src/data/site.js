@@ -150,7 +150,7 @@ export const faqs = [
       "Las reservas se gestionan a partir del siguiente link. Desde ahí podés ver horarios disponibles y confirmar tu lugar."
   },
   {
-    question: "¿Qué debo llevar a la primera sesión?",
+    question: "¿Qué debo llevar a la primer clase?",
     answer:
       "Ropa cómoda, agua y cualquier información relevante sobre molestias, lesiones o restricciones de movimiento."
   },

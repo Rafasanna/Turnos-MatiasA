@@ -7,6 +7,7 @@
   --paper: #f5f9fc;
   --white: #ffffff;
   --blue: #4b89b6;
+  --color-eyebrow-blue: #4b89b6;
   --blue-dark: #14394f;
   --sky: #dceff8;
   --soft: #eaf4f9;
@@ -233,7 +234,7 @@ a {
 
 .eyebrow {
   margin: 0 0 12px;
-  color: var(--blue);
+  color: var(--color-eyebrow-blue);
   font-size: 0.74rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -563,6 +564,10 @@ h3 {
   margin: 16px 0 0;
 }
 
+.section-title > .eyebrow {
+  color: var(--color-eyebrow-blue);
+}
+
 .text-panel {
   display: grid;
   gap: 14px;
@@ -864,7 +869,7 @@ h3 {
 }
 
 .footer-column h4 {
-  color: var(--sky);
+  color: var(--color-eyebrow-blue);
   margin-top: 0;
   margin-bottom: 18px;
   font-size: 1.05rem;
