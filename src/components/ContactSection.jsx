@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { contact, whatsappUrl, navItems } from "../data/site";
+import { contact, developerWhatsappUrl, whatsappUrl, navItems } from "../data/site";
 
 export default function ContactSection() {
   return (
@@ -91,7 +91,10 @@ export default function ContactSection() {
 
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Katena. Todos los derechos reservados.</p>
-          <p>Acompañamiento personalizado • Buenos Aires</p>
+          <p>Acompañamiento personalizado • CABA</p>
+          <a className="footer-credit" href={developerWhatsappUrl()} target="_blank" rel="noopener noreferrer">
+            Diseño &amp; desarrollo web · Rafaela Sanna
+          </a>
         </div>
 
         <div className="footer-legal">

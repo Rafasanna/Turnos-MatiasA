@@ -9,7 +9,13 @@ export const contact = {
 };
 
 export const whatsappMessage =
-  "Hola Matías, quiero consultar por Katena y reservar una clase.";
+  "Hola Matías! Quiero consultar por las actividades que brindas en Katena, muchas gracias";
+
+export const developerContact = {
+  whatsappNumber: "5493446608118",
+  whatsappMessage:
+    "Hola Rafa! Vi una página web que desarrollaste y quería consultarte por una para mi emprendimiento."
+};
 
 export const siteInfo = {
   brandName: "Katena",
@@ -63,18 +69,19 @@ export const proposalHighlights = [
 
 export const activities = [
   {
-    title: "K-Stretch® Postural",
-    description:
-      "Trabajo corporal orientado a movilidad, control, postura y conciencia del movimiento.",
-    bookingUrl: contact.crossfyUrl,
-    status: "available"
-  },
-  {
     title: "Entrenamiento fuerza",
     description:
       "Clases enfocadas en fuerza, técnica y progresión, adaptadas al punto de partida de cada persona.",
     bookingUrl: contact.crossfyUrl,
     status: "available"
+  },
+  {
+    title: "Fuerza",
+    description:
+      "Clase de fuerza a cargo del Prof. Martín, orientada a técnica, progresión y continuidad.",
+    bookingUrl: contact.crossfyUrl,
+    status: "available",
+    badge: "Prof. Martín"
   },
   {
     title: "K-Stretch®",
@@ -85,12 +92,11 @@ export const activities = [
     badge: "Sujeto a disponibilidad"
   },
   {
-    title: "Fuerza",
+    title: "K-Stretch® Postural",
     description:
-      "Clase de fuerza a cargo del Prof. Martín, orientada a técnica, progresión y continuidad.",
+      "Trabajo corporal orientado a movilidad, control, postura y conciencia del movimiento.",
     bookingUrl: contact.crossfyUrl,
-    status: "available",
-    badge: "Prof. Martín"
+    status: "available"
   }
 ];
 
@@ -141,7 +147,7 @@ export const faqs = [
   {
     question: "¿Cómo reservo una clase?",
     answer:
-      "Las reservas se gestionan desde CrossfyApp. Desde ahí podés ver horarios disponibles y confirmar tu lugar."
+      "Las reservas se gestionan a partir del siguiente link. Desde ahí podés ver horarios disponibles y confirmar tu lugar."
   },
   {
     question: "¿Qué debo llevar a la primera sesión?",
@@ -161,12 +167,12 @@ export const faqs = [
   {
     question: "¿Dónde está ubicado el espacio?",
     answer:
-      "Podés ver la ubicación desde el enlace de Google Maps en la sección de contacto."
+      "Podés ver la ubicación desde el enlace a Google Maps."
   }
 ];
 
 export const kstretchWhatsappMessage =
-  "Hola Matías, vi la página de Katena y quería consultar por K-Stretch®.";
+  whatsappMessage;
 
 export function whatsappUrl() {
   return `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -174,4 +180,8 @@ export function whatsappUrl() {
 
 export function kstretchWhatsappUrl() {
   return `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(kstretchWhatsappMessage)}`;
-} 
+}
+
+export function developerWhatsappUrl() {
+  return `https://wa.me/${developerContact.whatsappNumber}?text=${encodeURIComponent(developerContact.whatsappMessage)}`;
+}

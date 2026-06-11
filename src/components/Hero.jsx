@@ -21,7 +21,7 @@ export default function Hero() {
             <a className="button ghost" href="#sobre-katena">
               Sobre Katena
             </a>
-            <a className="button text-button" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+            <a className="button whatsapp-button" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>
           </div>
