@@ -3,7 +3,7 @@ export const contact = {
   instagramUrl: "https://www.instagram.com/katenapostural",
   instagramHandle: "@katenapostural",
   email: "katenapostural@gmail.com",
-  location: "Buenos Aires",
+  location: "Ciudad Autonoma de Buenos Aires",
   mapsUrl: "https://maps.app.goo.gl/ozgapkPzz2RAR6ME9",
   crossfyUrl: "https://crossfyapp.com/"
 };

@@ -18,7 +18,7 @@ export default function ContactSection() {
               <span>Katena</span>
             </div>
             <p className="footer-tagline">
-              Entrenamiento postural, fuerza y movilidad. Sostené una práctica consciente, cuidada y adaptada a vos.
+              Acompañamiento personalizado • CABA
             </p>
           </div>
 
@@ -80,9 +80,7 @@ export default function ContactSection() {
           {/* Columna 4: Reservas */}
           <div className="footer-column cta-column">
             <h4>Reservas</h4>
-            <p className="footer-cta-text">
-              Gestioná tus clases, horarios y asistencia desde CrossfyApp.
-            </p>
+            
             <a className="button primary footer-cta-btn" href={contact.crossfyUrl} target="_blank" rel="noopener noreferrer">
               Reservar clase
             </a>
@@ -91,7 +89,6 @@ export default function ContactSection() {
 
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Katena. Todos los derechos reservados.</p>
-          <p>Acompañamiento personalizado • CABA</p>
           <a className="footer-credit" href={developerWhatsappUrl()} target="_blank" rel="noopener noreferrer">
             Diseño &amp; desarrollo web · Rafaela Sanna
           </a>
