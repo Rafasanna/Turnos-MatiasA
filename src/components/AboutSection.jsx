@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { proposalHighlights } from "../data/site";
 import SectionTitle from "./SectionTitle";
 
@@ -53,6 +53,7 @@ function getHighlightIcon(index) {
 
 export default function AboutSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const sectionRef = useRef(null);
 
   const slides = [
     {
@@ -76,24 +77,65 @@ export default function AboutSection() {
     return () => clearInterval(timer);
   }, [slides.length]);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) {
+      return;
+    }
+
+    const revealItems = section.querySelectorAll(".about-reveal");
+
+    if (!("IntersectionObserver" in window)) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
+    section.classList.add("about-reveal-ready");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.18
+      }
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="section split-section" id="sobre-katena">
+    <section className="section split-section" id="sobre-katena" ref={sectionRef}>
       <SectionTitle
+        className="about-reveal"
         eyebrow="Sobre Katena"
         title="Entrenar mejor, con criterio y continuidad"
         text="Katena combina entrenamiento postural, fuerza y movilidad para construir una experiencia clara, cercana y sostenible."
       />
       <div className="text-panel">
-        <p>
+        <p className="about-reveal">
           La propuesta prioriza la <strong>técnica</strong>, la <strong>progresión</strong> y la <strong>escucha del cuerpo</strong>. Cada clase busca que entiendas qué estás trabajando y cómo avanzar con seguridad.
         </p>
-        <p>
+        <p className="about-reveal">
           El espacio está pensado para una <strong>experiencia cercana y profesional</strong>, con indicaciones claras, correcciones y seguimiento constante.
         </p>
       </div>
       <div className="proposal-grid" aria-label="Puntos destacados de la propuesta">
         {proposalHighlights.map((item, index) => (
-          <article className="proposal-card" key={item.title}>
+          <article
+            className="proposal-card about-reveal"
+            key={item.title}
+            style={{ "--reveal-delay": `${index * 70}ms` }}
+          >
             <div className="proposal-icon-container">
               {getHighlightIcon(index)}
             </div>
