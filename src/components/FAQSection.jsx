@@ -1,4 +1,4 @@
-import { contact, faqs, headerCta } from "../data/site";
+import { contact, faqs, whatsappUrl } from "../data/site";
 import SectionTitle from "./SectionTitle";
 
 export default function FAQSection() {
@@ -9,24 +9,24 @@ export default function FAQSection() {
         {faqs.map((item) => (
           <details key={item.question}>
             <summary>{item.question}</summary>
-            {item.question === "¿Cómo funciona K-Stretch®?" ? (
+            {item.question === "¿Qué es K-Stretch?" ? (
               <p>
                 <a className="faq-inline-link" href="#kstretch">
-                  K-Stretch®
+                  K-Stretch
                 </a>{" "}
-                es una propuesta de trabajo corporal y postural orientada a movilidad, control, fuerza y conciencia corporal.
+                es un trabajo postural y de flexibilidad global orientado a reequilibrar cadenas musculares y miofasciales, mejorar movilidad y reducir compensaciones.
               </p>
             ) : (
               <p>{item.answer}</p>
             )}
-            {item.question === "¿Cómo reservo una clase?" ? (
+            {item.question === "¿Cómo consulto horarios disponibles?" ? (
               <div className="faq-actions">
-                <a className="button primary faq-button" href={headerCta.href}>
-                  Reservar clase
+                <a className="button primary faq-button" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+                  Consultar por WhatsApp
                 </a>
               </div>
             ) : null}
-            {item.question === "¿Dónde está ubicado el espacio?" ? (
+            {item.question === "¿Dónde está ubicado Katena?" ? (
               <div className="faq-actions">
                 <a className="button primary faq-button" href={contact.mapsUrl} target="_blank" rel="noopener noreferrer">
                   Ver ubicación

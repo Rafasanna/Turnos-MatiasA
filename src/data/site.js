@@ -4,12 +4,19 @@ export const contact = {
   instagramHandle: "@katenapostural",
   email: "katenapostural@gmail.com",
   location: "Ciudad Autonoma de Buenos Aires",
-  mapsUrl: "https://maps.app.goo.gl/ozgapkPzz2RAR6ME9",
-  crossfyUrl: "https://crossfyapp.com/"
+  mapsUrl: "https://maps.app.goo.gl/ozgapkPzz2RAR6ME9"
 };
 
 export const whatsappMessage =
   "Hola Matías! Quiero consultar por las actividades que brindas en Katena, muchas gracias";
+
+export const strengthWhatsappMessage =
+  "Hola Matías! Quiero consultar por entrenamiento de fuerza en Katena, muchas gracias";
+
+export const kstretchWhatsappMessage =
+  "Hola Matías! Quiero consultar por K-Stretch en Katena, muchas gracias";
+
+export const CROSSFY_VIDEO_URL = "https://drive.google.com/file/d/1hXFBw0Ac0_rLKBFLlimDMDgtr-lRIa-z/view";
 
 export const developerContact = {
   whatsappNumber: "5493446608118",
@@ -20,10 +27,10 @@ export const developerContact = {
 export const siteInfo = {
   brandName: "Katena",
   professionalName: "Prof. Matías Aramburu",
-  heroEyebrow: "Katena entrenamiento postural y fuerza",
+  heroEyebrow: "Entrenamiento postural y fuerza",
   heroTitle: "Katena",
   heroText:
-  "Clases pensadas para mejorar tu postura, movilidad y bienestar, con acompañamiento profesional en cada proceso."
+    "Un espacio profesional para construir un cuerpo fuerte, móvil y funcional, con guía personalizada, técnica cuidada y un método basado en biomecánica, postura y movimiento consciente."
 };
 
 export const professionalSummary = {
@@ -39,65 +46,57 @@ export const professionalSummary = {
 
 export const navItems = [
   { label: "Inicio", href: "#inicio" },
-  { label: "Sobre Katena", href: "#sobre-katena" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Actividades", href: "#actividades" },
-  { label: "K-Stretch®", href: "#kstretch" },
+  { label: "Katena", href: "#katena" },
+  { label: "Propuesta", href: "#propuesta" },
+  { label: "Reservar", href: "#crossfy" },
+  { label: "K-Stretch", href: "#kstretch" },
   { label: "Contacto", href: "#contacto" }
 ];
 
-export const headerCta = { label: "Reservar", href: "#actividades" };
+export const headerCta = { label: "Consultar", mobileLabel: "Consultar" };
 
 export const proposalHighlights = [
   {
-    title: "Técnica y progresión",
-    description: "Consignas claras para avanzar de forma ordenada, sin apurar procesos."
+    title: "Rigurosidad técnica",
+    description: "Cada ejercicio tiene un porqué. La técnica, la biomecánica y el análisis del movimiento guían el entrenamiento."
   },
   {
-    title: "Movimiento consciente",
-    description: "Trabajo orientado a reconocer el cuerpo, mejorar control y sostener calidad de movimiento."
+    title: "Cupos reducidos",
+    description: "Trabajamos con grupos controlados para corregir, adaptar y acompañar en tiempo real."
   },
   {
-    title: "Seguimiento cercano",
-    description: "Correcciones e indicaciones durante la clase para entrenar con más criterio."
+    title: "Orden y pulcritud",
+    description: "Un espacio limpio, cuidado y organizado para entrenar con concentración, respeto y comodidad."
   },
   {
-    title: "Entrenamiento adaptado",
-    description: "La propuesta se ajusta al punto de partida, objetivos y experiencia de cada persona."
+    title: "Fuerza + flexibilidad",
+    description: "Entrenamos el cuerpo como una unidad: fuerza, postura, movilidad y control."
   }
 ];
 
 export const activities = [
   {
-    title: "Entrenamiento fuerza",
+    title: "Entrenamiento de fuerza consciente",
     description:
-      "Clases enfocadas en fuerza, técnica y progresión, adaptadas al punto de partida de cada persona.",
-    bookingUrl: contact.crossfyUrl,
-    status: "available"
+      "Sesiones orientadas al desarrollo de fuerza muscular con técnica correcta, control postural y progresión segura de cargas.",
+    ctaLabel: "Consultar por fuerza",
+    whatsappMessage: strengthWhatsappMessage
   },
   {
-    title: "Fuerza",
+    title: "Postura y flexibilidad global / K-Stretch",
     description:
-      "Clase de fuerza a cargo del Prof. Martín, orientada a técnica, progresión y continuidad.",
-    bookingUrl: contact.crossfyUrl,
-    status: "available",
-    badge: "Prof. Martín"
-  },
-  {
-    title: "K-Stretch®",
-    description:
-      "Espacio de K-Stretch® sujeto a disponibilidad. Consultar horarios desde la app.",
-    bookingUrl: contact.crossfyUrl,
-    status: "standby",
-    badge: "Sujeto a disponibilidad"
-  },
-  {
-    title: "K-Stretch® Postural",
-    description:
-      "Trabajo corporal orientado a movilidad, control, postura y conciencia del movimiento.",
-    bookingUrl: contact.crossfyUrl,
-    status: "available"
+      "Trabajo orientado a reequilibrar cadenas musculares y miofasciales, mejorar la movilidad, cuidar la postura y reducir compensaciones del día a día.",
+    ctaLabel: "Consultar por K-Stretch",
+    whatsappMessage: kstretchWhatsappMessage
   }
+];
+
+export const audienceItems = [
+  "Adultos que buscan entrenar fuerza de forma segura.",
+  "Personas con tensiones, molestias posturales o rigidez.",
+  "Quienes quieren mejorar movilidad y flexibilidad.",
+  "Personas que valoran el acompañamiento profesional.",
+  "Quienes buscan un espacio serio, ordenado y personalizado."
 ];
 
 export const testimonials = [
@@ -145,37 +144,39 @@ export const faqs = [
       "No. La propuesta se adapta al punto de partida, condición física y objetivos de cada persona."
   },
   {
-    question: "¿Cómo reservo una clase?",
+    question: "¿Qué diferencia a Katena de un gimnasio tradicional?",
     answer:
-      "Las reservas se gestionan a partir del siguiente link. Desde ahí podés ver horarios disponibles y confirmar tu lugar."
+      "Katena no alquila máquinas ni vende horas de gimnasio. Ofrece un sistema guiado por profesionales, con técnica, seguimiento y cupos controlados."
   },
   {
-    question: "¿Qué debo llevar a la primer clase?",
+    question: "¿Qué es K-Stretch?",
     answer:
-      "Ropa cómoda, agua y cualquier información relevante sobre molestias, lesiones o restricciones de movimiento."
+      "Es un trabajo postural y de flexibilidad global orientado a reequilibrar cadenas musculares y miofasciales, mejorar movilidad y reducir compensaciones."
   },
   {
-    question: "¿Las clases son grupales o personalizadas?",
+    question: "¿Puedo entrenar si tengo molestias?",
     answer:
-      "Katena trabaja con seguimiento cercano. La modalidad puntual puede variar según el servicio y la disponibilidad."
+      "Depende de cada caso. Por eso el primer paso es escribir por WhatsApp para contar tu situación y recibir una orientación inicial."
   },
   {
-    question: "¿Cómo funciona K-Stretch®?",
+    question: "¿Cómo consulto horarios disponibles?",
     answer:
-      "Es una propuesta de trabajo corporal y postural orientada a movilidad, control, fuerza y conciencia corporal."
+      "Escribinos por WhatsApp. Matías te orienta según tu objetivo, disponibilidad y la propuesta más adecuada."
   },
   {
-    question: "¿Dónde está ubicado el espacio?",
+    question: "¿Cómo gestionan las clases?",
     answer:
-      "Podés ver la ubicación desde el enlace a Google Maps."
+      "Las clases se organizan mediante Crossfy, pero el primer paso es escribirnos por WhatsApp. Matías te orienta, te explica la propuesta y luego te indica cómo avanzar con la app."
+  },
+  {
+    question: "¿Dónde está ubicado Katena?",
+    answer:
+      "Katena está en Ciudad Autónoma de Buenos Aires. Podés ver la ubicación exacta desde Google Maps."
   }
 ];
 
-export const kstretchWhatsappMessage =
-  whatsappMessage;
-
-export function whatsappUrl() {
-  return `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+export function whatsappUrl(message = whatsappMessage) {
+  return `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
 export function kstretchWhatsappUrl() {

@@ -7,11 +7,11 @@ export const metadata = {
     template: "%s | Katena"
   },
   description:
-    "Katena es el espacio profesional de Matías Aramburu para entrenamiento postural, K-Stretch®, fuerza, movilidad y acompañamiento profesional.",
+    "Katena es un centro de entrenamiento postural y fuerza con guía profesional, técnica cuidada, K-Stretch, movilidad y acompañamiento personalizado.",
   openGraph: {
     title: "Katena | Entrenamiento postural y fuerza",
     description:
-      "Conocé Katena, las actividades disponibles, K-Stretch® y el acompañamiento profesional del Prof. Matías Aramburu.",
+      "Conocé Katena: entrenamiento postural y fuerza, K-Stretch, movilidad, técnica y acompañamiento profesional.",
     url: "https://turnos-matias-a.vercel.app",
     siteName: "Katena",
     images: [
@@ -29,7 +29,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Katena | Entrenamiento postural y fuerza",
     description:
-      "Entrenamiento postural, K-Stretch®, fuerza funcional y movilidad con seguimiento profesional."
+      "Entrenamiento postural, K-Stretch, fuerza consciente y movilidad con seguimiento profesional."
   },
   icons: {
     icon: "/assets/logo-katena.jpg",

@@ -687,6 +687,11 @@ h3 {
   gap: 10px;
 }
 
+.wide-title {
+  grid-column: 1 / -1;
+  margin-top: clamp(10px, 2vw, 18px);
+}
+
 .proposal-card {
   padding: 18px;
   border: 1px solid var(--line);
@@ -715,21 +720,29 @@ h3 {
 
 .activities-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
   gap: 12px;
   margin-top: 24px;
 }
 
 .activity-card {
+  height: 100%;
   min-height: 240px;
-  display: grid;
-  align-content: start;
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--white);
   box-shadow: 0 12px 30px rgba(18, 58, 80, 0.06);
+}
+
+.activity-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .activity-card-head {
@@ -782,7 +795,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  align-self: end;
+  align-self: stretch;
   margin-top: auto;
   padding: 10px 14px;
   border-radius: 8px;
@@ -888,6 +901,145 @@ h3 {
     radial-gradient(circle at 12% 18%, rgba(220, 239, 248, 0.95), rgba(220, 239, 248, 0) 35%),
     var(--white);
   box-shadow: var(--shadow);
+}
+
+.crossfy-section {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  align-items: center;
+  gap: clamp(22px, 4vw, 52px);
+  margin-bottom: clamp(34px, 5vw, 66px);
+  padding: clamp(30px, 5vw, 56px);
+  border: 1px solid rgba(75, 137, 182, 0.2);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 92% 14%, rgba(220, 239, 248, 0.72), rgba(220, 239, 248, 0) 38%),
+    var(--white);
+  box-shadow: var(--shadow);
+}
+
+.crossfy-note {
+  margin: 18px 0 0;
+  color: var(--blue-dark);
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.crossfy-visual {
+  width: 100%;
+}
+
+.crossfy-image,
+.crossfy-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+}
+
+.crossfy-image {
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(18, 58, 80, 0.08);
+}
+
+.crossfy-placeholder {
+  min-height: 220px;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 8px;
+  padding: 24px;
+  border: 1px dashed rgba(75, 137, 182, 0.35);
+  background:
+    radial-gradient(circle at 80% 12%, rgba(220, 239, 248, 0.5), rgba(220, 239, 248, 0) 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 248, 252, 0.95));
+}
+
+.crossfy-placeholder span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  color: var(--blue-dark);
+  background: var(--sky);
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.crossfy-placeholder strong {
+  color: var(--blue-dark);
+  font-size: 1.05rem;
+}
+
+.crossfy-placeholder p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.crossfy-placeholder code {
+  background: var(--soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--blue-dark);
+  font-family: monospace;
+}
+
+.button.is-disabled {
+  color: #758995;
+  border-color: rgba(117, 137, 149, 0.22);
+  background: rgba(255, 255, 255, 0.45);
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.audience-section {
+  padding: clamp(38px, 6vw, 72px) 0;
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.audience-card {
+  min-height: 150px;
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 12px 30px rgba(18, 58, 80, 0.05);
+}
+
+.audience-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  color: var(--blue-dark);
+  background: var(--sky);
+  font-weight: 900;
+}
+
+.audience-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.94rem;
+}
+
+.audience-carousel-controls {
+  display: none;
 }
 
 .booking-cta h2 {
@@ -1244,6 +1396,7 @@ h3 {
 
   .card-grid,
   .activities-grid,
+  .audience-grid,
   .testimonial-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1260,10 +1413,6 @@ h3 {
 
   .header-cta-mobile {
     display: inline;
-  }
-
-  .hero-cta {
-    display: none !important;
   }
 
   .site-header {
@@ -1338,6 +1487,7 @@ h3 {
   .professional-section,
   .kstretch-section,
   .faq-section,
+  .crossfy-section,
   .booking-cta {
     grid-template-columns: 1fr;
   }
@@ -1354,7 +1504,7 @@ h3 {
 
 @media (max-width: 560px) {
   section {
-    scroll-margin-top: 78px;
+    scroll-margin-top: 90px;
   }
 
   .site-header {
@@ -1398,7 +1548,7 @@ h3 {
   }
 
   .hero {
-    padding: 86px 0 34px;
+    padding: 92px 0 42px;
   }
 
   .eyebrow {
@@ -1408,17 +1558,23 @@ h3 {
 
   h1 {
     max-width: 100%;
-    font-size: clamp(3.25rem, 18vw, 4.4rem);
-    line-height: 0.94;
+    font-size: clamp(2.8rem, 15vw, 3.72rem);
+    line-height: 0.96;
   }
 
   h2 {
-    font-size: clamp(1.75rem, 9vw, 2.42rem);
+    font-size: clamp(1.44rem, 6.8vw, 1.92rem);
+    line-height: 1.12;
+  }
+
+  h3 {
+    line-height: 1.18;
   }
 
   .hero-lead {
     max-width: 340px;
     font-size: 1rem;
+    line-height: 1.55;
   }
 
   .hero-actions,
@@ -1429,8 +1585,8 @@ h3 {
   }
 
   .hero-actions {
-    display: none;
-    margin-top: 0;
+    display: grid;
+    margin-top: 22px;
   }
 
   .button {
@@ -1450,7 +1606,7 @@ h3 {
   }
 
   .section {
-    width: min(100% - 28px, 1160px);
+    width: min(100% - 32px, 1160px);
   }
 
   .site-footer {
@@ -1463,7 +1619,23 @@ h3 {
   .activities-section,
   .testimonials-section,
   .faq-section {
-    padding-block: 38px;
+    padding-block: 50px;
+  }
+
+  .section-title > p {
+    margin-top: 12px;
+    line-height: 1.55;
+  }
+
+  .wide-title {
+    margin-top: 22px;
+  }
+
+  .text-panel p,
+  .activity-card p,
+  .kstretch-description,
+  .faq-list p {
+    line-height: 1.55;
   }
 
   .card-grid,
@@ -1474,6 +1646,23 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .audience-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 12px;
+    margin: 22px -16px 0 0;
+    padding: 0 16px 2px 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .audience-grid::-webkit-scrollbar {
+    display: none;
+  }
+
   .feature-card,
   .activity-card,
   .testimonial-card {
@@ -1481,9 +1670,93 @@ h3 {
     padding: 20px;
   }
 
+  .audience-card {
+    flex: 0 0 min(82vw, 300px);
+    min-height: 132px;
+    scroll-snap-align: start;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .audience-card span {
+    width: 26px;
+    height: 26px;
+    font-size: 0.82rem;
+  }
+
+  .audience-card p {
+    font-size: 0.92rem;
+    line-height: 1.48;
+  }
+
+  .audience-carousel-controls {
+    display: grid;
+    grid-template-columns: 36px 1fr 36px;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .audience-carousel-controls > button {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(75, 137, 182, 0.2);
+    border-radius: 999px;
+    color: var(--blue-dark);
+    background: rgba(255, 255, 255, 0.78);
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .audience-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+  }
+
+  .audience-dots button {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(75, 137, 182, 0.24);
+    cursor: pointer;
+    transition: width 180ms ease, background 180ms ease;
+  }
+
+  .audience-dots button.active {
+    width: 20px;
+    background: var(--blue);
+  }
+
   .booking-cta,
+  .crossfy-section,
   .kstretch-section {
     padding: 22px;
+  }
+
+  .crossfy-section {
+    margin-bottom: 52px;
+  }
+
+  .kstretch-section {
+    margin-bottom: 48px;
+  }
+
+  .audience-section {
+    padding: 50px 0 48px;
+  }
+
+  .faq-section {
+    margin-top: 8px;
+  }
+
+  .crossfy-placeholder {
+    min-height: 190px;
   }
 
   .site-footer {
@@ -1680,10 +1953,10 @@ h3 {
 }
 
 .activity-card {
+  height: 100%;
   min-height: 240px;
-  display: grid;
-  align-content: start;
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -1717,7 +1990,7 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  align-self: end;
+  align-self: stretch;
   margin-top: auto;
   padding: 8px 16px;
   border-radius: 999px;
@@ -1774,6 +2047,52 @@ h3 {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.space-photo-fallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 8px;
+  padding: clamp(22px, 4vw, 34px);
+  color: var(--blue-dark);
+  background:
+    radial-gradient(circle at 80% 18%, rgba(220, 239, 248, 0.62), rgba(220, 239, 248, 0) 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(236, 247, 252, 0.98));
+}
+
+.space-photo-fallback span {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--sky);
+  font-weight: 900;
+}
+
+.space-photo-fallback strong {
+  font-size: 1.05rem;
+}
+
+.space-photo-fallback p {
+  max-width: 420px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.space-photo-fallback code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--soft);
+  color: var(--blue-dark);
+  font-family: monospace;
+  font-size: 0.82rem;
 }
 
 .carrusel-control {

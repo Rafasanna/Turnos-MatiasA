@@ -77,12 +77,15 @@ export default function ContactSection() {
             </ul>
           </div>
 
-          {/* Columna 4: Reservas */}
+          {/* Columna 4: Consulta */}
           <div className="footer-column cta-column">
-            <h4>Reservas</h4>
+            <h4>Consulta inicial</h4>
+            <p className="footer-cta-text">
+              Escribinos y te orientamos según tu objetivo.
+            </p>
             
-            <a className="button primary footer-cta-btn" href={contact.crossfyUrl} target="_blank" rel="noopener noreferrer">
-              Reservar clase
+            <a className="button primary footer-cta-btn" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+              Consultar por WhatsApp
             </a>
           </div>
         </div>
@@ -98,22 +101,22 @@ export default function ContactSection() {
           <details>
             <summary>Términos y condiciones</summary>
             <p>
-              La web es informativa y permite solicitar o reservar clases. La reserva puede quedar sujeta a disponibilidad. Horarios, cupos y actividades pueden modificarse. La confirmación puede hacerse por WhatsApp. La información del sitio puede actualizarse. Las clases no reemplazan una consulta médica. Ante lesiones, dolor o condiciones particulares, la persona debe consultar con un profesional de salud.
+              La web es informativa y permite solicitar orientación sobre las propuestas de Katena. Horarios, cupos y actividades pueden modificarse. La coordinación inicial se realiza por WhatsApp y la gestión de clases puede organizarse mediante Crossfy. Las clases no reemplazan una consulta médica. Ante lesiones, dolor o condiciones particulares, la persona debe consultar con un profesional de salud.
             </p>
           </details>
           <details>
             <summary>Política de Privacidad</summary>
             <p>
-              En Katena cuidamos la privacidad de quienes visitan este sitio y se comunican para consultar o reservar clases.
+              En Katena cuidamos la privacidad de quienes visitan este sitio y se comunican para consultar por las actividades.
             </p>
             <p>
-              Podemos solicitar datos básicos como nombre, teléfono, actividad de interés y mensaje, únicamente para responder consultas, coordinar reservas y brindar información sobre las actividades disponibles.
+              Podemos solicitar datos básicos como nombre, teléfono, actividad de interés y mensaje, únicamente para responder consultas y brindar información sobre las actividades disponibles.
             </p>
             <p>
               Los datos recibidos no se venden ni se comparten con terceros con fines comerciales.
             </p>
             <p>
-              Al completar un formulario o comunicarse por WhatsApp desde este sitio, la persona acepta que sus datos sean utilizados para gestionar su consulta o reserva.
+              Al comunicarse por WhatsApp desde este sitio, la persona acepta que sus datos sean utilizados para gestionar su consulta.
             </p>
             <p>
               En cualquier momento se puede solicitar la modificación o eliminación de los datos personales escribiendo al canal de contacto informado en la web.

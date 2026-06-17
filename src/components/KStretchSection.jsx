@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { contact, kstretchWhatsappUrl } from "../data/site";
+import { kstretchWhatsappUrl } from "../data/site";
 import SectionTitle from "./SectionTitle";
 
 export default function KStretchSection() {
@@ -21,15 +21,11 @@ export default function KStretchSection() {
         <SectionTitle
           eyebrow="Propuesta postural"
           title="¿Qué es K-Stretch®?"
-          text={
-            <>
-              <strong>K-Stretch®</strong> es una propuesta de trabajo corporal y postural orientada a mejorar la <strong>movilidad</strong>, el <strong>control del movimiento</strong>, la <strong>fuerza</strong> y la <strong>conciencia corporal</strong>, mediante sesiones guiadas y progresivas.
-            </>
-          }
+          text="K-Stretch® es una propuesta de trabajo corporal y postural orientada a mejorar la movilidad, el control del movimiento, la fuerza y la conciencia corporal mediante sesiones guiadas y progresivas."
         />
 
         <p className="kstretch-description">
-          En Katena, las sesiones de K-Stretch® se desarrollan con <strong>consignas claras</strong>, <strong>acompañamiento profesional personalizado</strong> y progresiones adaptadas al punto de partida de cada persona. Nuestra propuesta busca que la práctica no sea simplemente moverse, sino <strong>comprender cómo responde el cuerpo</strong>, mejorar la calidad de cada movimiento y consolidar un <strong>entrenamiento consciente, seguro y sostenible</strong> en el tiempo.
+          En Katena, cada clase se realiza con consignas claras, acompañamiento profesional y progresiones adaptadas al punto de partida de cada persona.
         </p>
 
         <div className="kstretch-benefits-wrapper">
@@ -45,11 +41,11 @@ export default function KStretchSection() {
         </div>
 
         <div className="inline-actions">
-          <a className="button primary" href={contact.crossfyUrl} target="_blank" rel="noopener noreferrer">
-            Reservar clase
-          </a>
-          <a className="button ghost" href={kstretchWhatsappUrl()} target="_blank" rel="noopener noreferrer">
+          <a className="button primary" href={kstretchWhatsappUrl()} target="_blank" rel="noopener noreferrer">
             Consultar por K-Stretch®
+          </a>
+          <a className="button ghost" href="#crossfy">
+            Cómo reservar
           </a>
         </div>
       </div>

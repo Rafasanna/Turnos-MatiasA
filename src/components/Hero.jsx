@@ -15,14 +15,11 @@ export default function Hero() {
           <p className="hero-lead">{siteInfo.heroText}</p>
           
           <div className="hero-actions" aria-label="Acciones principales">
-            <a className="button primary hero-cta" href="#actividades">
-              Reservar clase
+            <a className="button primary hero-cta" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+              Consultar
             </a>
-            <a className="button ghost" href="#sobre-katena">
+            <a className="button ghost" href="#katena">
               Sobre Katena
-            </a>
-            <a className="button whatsapp-button" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
-              WhatsApp
             </a>
           </div>
         </div>

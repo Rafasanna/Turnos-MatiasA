@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { headerCta, navItems } from "../data/site";
+import { headerCta, navItems, whatsappUrl } from "../data/site";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,9 +57,9 @@ export default function Header() {
               <a href={item.href} key={item.href}>{item.label}</a>
             ))}
           </nav>
-          <a className="header-cta" href={headerCta.href}>
+          <a className="header-cta" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
             <span className="header-cta-desktop">{headerCta.label}</span>
-            <span className="header-cta-mobile">Reservar clase</span>
+            <span className="header-cta-mobile">{headerCta.mobileLabel}</span>
           </a>
           <details
             className="mobile-menu"

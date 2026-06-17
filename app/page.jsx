@@ -1,5 +1,7 @@
 import AboutSection from "../src/components/AboutSection";
+import AudienceSection from "../src/components/AudienceSection";
 import ContactSection from "../src/components/ContactSection";
+import CrossfySection from "../src/components/CrossfySection";
 import FAQSection from "../src/components/FAQSection";
 import Header from "../src/components/Header";
 import Hero from "../src/components/Hero";
@@ -16,9 +18,11 @@ export default function Home() {
       <main>
         <Hero />
         <AboutSection />
-        <FAQSection />
         <ServicesSection />
+        <CrossfySection />
         <KStretchSection />
+        <AudienceSection />
+        <FAQSection />
         <TestimonialsSection />
       </main>
       <ContactSection />
