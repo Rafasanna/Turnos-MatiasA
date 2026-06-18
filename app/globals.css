@@ -384,8 +384,10 @@ h3 {
 
 .hero-photo-card {
   position: relative;
-  width: min(100%, 380px);
+  width: 380px;
+  max-width: 100%;
   aspect-ratio: 3 / 4;
+  min-height: 500px;
   border-radius: 20px;
   overflow: hidden;
   background: var(--white);
@@ -1511,7 +1513,9 @@ h3 {
   }
 
   .hero-photo-card {
-    max-width: 280px;
+    width: 280px;
+    max-width: 100%;
+    min-height: 373px;
     border-width: 6px;
     margin-top: 10px;
   }
@@ -1624,6 +1628,11 @@ h3 {
 
   .hero-image-composition {
     width: min(100%, 300px);
+  }
+
+  .hero-photo-card {
+    width: min(100%, 280px);
+    min-height: 373px;
   }
 
   .button {
