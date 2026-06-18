@@ -1,6 +1,10 @@
 # Carpeta de Imágenes de Katena
 
-Coloca aquí la imagen de K-Stretch® con el nombre exacto:
-`kstretch-equipo.jpg`
+Imágenes activas usadas por el sitio:
 
-El sitio la cargará automáticamente en la sección de K-Stretch®.
+- `katena-logo-card.png`
+- `katena-hero-ambiente-1.jpg`
+- `katena-hero-ambiente-2.jpg`
+- `katena-banner-equipamiento.png`
+- `k-stretch-sala.png`
+- `matias-quien-soy.png`

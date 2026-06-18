@@ -56,33 +56,10 @@ export default function AboutSection() {
   const [failedSlides, setFailedSlides] = useState([]);
   const sectionRef = useRef(null);
 
-  const futureSpaceSlides = [
-    {
-      src: "/images/katena/espacio-katena-1.jpg",
-      alt: "Espacio de entrenamiento Katena"
-    },
-    {
-      src: "/images/katena/espacio-katena-2.jpg",
-      alt: "Equipamiento de entrenamiento postural"
-    },
-    {
-      src: "/images/katena/espacio-katena-3.jpg",
-      alt: "Clase de entrenamiento postural y fuerza en Katena"
-    }
-  ];
-
   const slides = [
     {
-      src: "/images/carrusel-1.jpg",
-      alt: "Espacio de entrenamiento Katena"
-    },
-    {
-      src: "/images/carrusel-2.jpg",
-      alt: "Equipamiento de entrenamiento postural"
-    },
-    {
-      src: "/images/katena-banner.jpg",
-      alt: "Clase de entrenamiento postural y fuerza en Katena"
+      src: "/images/katena-banner-equipamiento.png",
+      alt: "Equipamiento de entrenamiento postural y fuerza en Katena"
     }
   ];
 
@@ -210,7 +187,7 @@ export default function AboutSection() {
                 <span aria-hidden="true">+</span>
                 <strong>Imagen próximamente</strong>
                 <p>
-                  Rutas preparadas: <code>{futureSpaceSlides.map((slide) => slide.src).join(", ")}</code>
+                  Ruta preparada: <code>/images/katena-banner-equipamiento.png</code>
                 </p>
               </div>
             </div>

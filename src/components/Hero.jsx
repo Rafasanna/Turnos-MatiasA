@@ -1,10 +1,61 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { siteInfo, whatsappUrl } from "../data/site";
 
 export default function Hero() {
-  const [imgFailed, setImgFailed] = useState(false);
+  const [failedImages, setFailedImages] = useState([]);
+
+  const markImageFailed = (src) => {
+    setFailedImages((current) => (
+      current.includes(src) ? current : [...current, src]
+    ));
+  };
+
+  const heroImages = {
+    logo: "/images/katena-logo-card.png",
+    ambiente1: "/images/katena-hero-ambiente-1.jpg",
+    ambiente2: "/images/katena-hero-ambiente-2.jpg"
+  };
+
+  const slides = [
+    {
+      src: heroImages.logo,
+      alt: "Katena entrenamiento postural y fuerza",
+      fit: "contain"
+    },
+    {
+      src: heroImages.ambiente1,
+      alt: "Espacio de entrenamiento de Katena",
+      fit: "cover"
+    },
+    {
+      src: heroImages.ambiente2,
+      alt: "Sala de trabajo postural en Katena",
+      fit: "cover"
+    }
+  ];
+
+  const visibleSlides = slides.filter((slide) => !failedImages.includes(slide.src));
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (visibleSlides.length <= 1) {
+      return undefined;
+    }
+
+    const timer = setInterval(() => {
+      setCurrentSlide((current) => (current + 1) % visibleSlides.length);
+    }, 4200);
+
+    return () => clearInterval(timer);
+  }, [visibleSlides.length]);
+
+  useEffect(() => {
+    if (currentSlide >= visibleSlides.length) {
+      setCurrentSlide(0);
+    }
+  }, [currentSlide, visibleSlides.length]);
 
   return (
     <section className="hero" id="inicio">
@@ -24,27 +75,45 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Prof. Matías Aramburu - Profesional a cargo de Katena">
-          <div className="hero-photo-card">
-            {!imgFailed ? (
-              <img
-                src="/images/matias-aramburu.jpg"
-                alt="Prof. Matías Aramburu"
-                className="hero-photo"
-                onError={() => setImgFailed(true)}
-              />
-            ) : (
-              <div className="hero-photo-placeholder">
-                <span aria-hidden="true">👤</span>
-                <strong>Prof. Matías Aramburu</strong>
-                <p>Profesional a cargo</p>
-              </div>
-            )}
-            
-            <div className="hero-photo-badge">
-              <strong>Prof. Matías Aramburu</strong>
-              <span>Profesional a cargo</span>
+        <div className="hero-visual" aria-label="Katena - Entrenamiento postural y fuerza">
+          <div className="hero-image-composition">
+            <div className="hero-photo-card">
+              {visibleSlides.length > 0 ? (
+                visibleSlides.map((slide, index) => (
+                  <div
+                    className={`hero-carousel-slide ${index === currentSlide ? "active" : ""}`}
+                    key={slide.src}
+                  >
+                    <img
+                      src={slide.src}
+                      alt={slide.alt}
+                      className={`hero-photo hero-photo-${slide.fit}`}
+                      onError={() => markImageFailed(slide.src)}
+                    />
+                  </div>
+                ))
+              ) : (
+                <div className="hero-photo-placeholder">
+                  <span aria-hidden="true">K</span>
+                  <strong>Katena</strong>
+                  <p>Entrenamiento postural y fuerza</p>
+                </div>
+              )}
             </div>
+
+            {visibleSlides.length > 1 ? (
+              <div className="hero-carousel-indicators" aria-label="Indicadores del carrusel principal">
+                {visibleSlides.map((slide, index) => (
+                  <button
+                    key={slide.src}
+                    className={`hero-carousel-dot ${index === currentSlide ? "active" : ""}`}
+                    onClick={() => setCurrentSlide(index)}
+                    aria-label={`Ver imagen ${index + 1} del hero`}
+                    type="button"
+                  />
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

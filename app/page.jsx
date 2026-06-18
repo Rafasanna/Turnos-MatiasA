@@ -6,6 +6,7 @@ import FAQSection from "../src/components/FAQSection";
 import Header from "../src/components/Header";
 import Hero from "../src/components/Hero";
 import KStretchSection from "../src/components/KStretchSection";
+import ProfessionalSection from "../src/components/ProfessionalSection";
 import ServicesSection from "../src/components/ServicesSection";
 import SplashScreen from "../src/components/SplashScreen";
 import TestimonialsSection from "../src/components/TestimonialsSection";
@@ -18,6 +19,7 @@ export default function Home() {
       <main>
         <Hero />
         <AboutSection />
+        <ProfessionalSection />
         <ServicesSection />
         <CrossfySection />
         <KStretchSection />

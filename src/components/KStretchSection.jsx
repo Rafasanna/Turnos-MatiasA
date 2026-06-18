@@ -53,8 +53,8 @@ export default function KStretchSection() {
       <div className="kstretch-visual">
         {!imgFailed ? (
           <img
-            src="/images/kstretch-equipo.jpg"
-            alt="Equipo de K-Stretch® en un espacio de entrenamiento"
+            src="/images/k-stretch-sala.png"
+            alt="Sala de K-Stretch® en Katena"
             className="kstretch-image"
             onError={() => setImgFailed(true)}
           />
@@ -63,7 +63,7 @@ export default function KStretchSection() {
             <span aria-hidden="true">+</span>
             <strong>Foto de K-Stretch®</strong>
             <p>
-              Ubicación esperada: <code>public/images/kstretch-equipo.jpg</code>.
+              Ubicación esperada: <code>public/images/k-stretch-sala.png</code>.
               Se mostrará aquí automáticamente cuando agregues el archivo.
             </p>
           </div>
