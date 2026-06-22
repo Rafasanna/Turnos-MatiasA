@@ -402,6 +402,11 @@ h3 {
   box-shadow: 0 24px 54px rgba(18, 58, 80, 0.14);
 }
 
+.hero-photo-card-brand {
+  background: #eaf6fb;
+  border-color: rgba(234, 246, 251, 0.96);
+}
+
 .hero-photo {
   width: 100%;
   height: 100%;
@@ -429,6 +434,63 @@ h3 {
 .hero-carousel-slide.active {
   opacity: 1;
   z-index: 1;
+}
+
+.hero-brand-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0) 38%),
+    linear-gradient(160deg, #eaf6fb 0%, #d6edf7 48%, #f5fbfd 100%);
+}
+
+.hero-brand-slide::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border: 1px solid rgba(75, 137, 182, 0.16);
+  border-radius: 18px;
+}
+
+.hero-brand-slide::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.34) 100%);
+}
+
+.hero-brand-image-frame {
+  position: relative;
+  z-index: 1;
+  width: min(86%, 300px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.48);
+  box-shadow: 0 22px 54px rgba(18, 58, 80, 0.14);
+  transform: translateY(8px) scale(0.96);
+  transition: transform 760ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-brand-image {
+  width: 122%;
+  height: 122%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.08);
+}
+
+.hero-carousel-slide.active .hero-brand-image-frame {
+  transform: translateY(0) scale(1);
 }
 
 .hero-photo-placeholder {
@@ -1520,6 +1582,15 @@ h3 {
     margin-top: 10px;
   }
 
+  .hero-brand-slide::before {
+    inset: 18px;
+  }
+
+  .hero-brand-image-frame {
+    width: min(78%, 230px);
+    border-radius: 24px;
+  }
+
   .split-section,
   .professional-section,
   .kstretch-section,
@@ -1633,6 +1704,16 @@ h3 {
   .hero-photo-card {
     width: min(100%, 280px);
     min-height: 373px;
+  }
+
+  .hero-brand-slide::before {
+    inset: 16px;
+    border-radius: 16px;
+  }
+
+  .hero-brand-image-frame {
+    width: min(74%, 210px);
+    border-radius: 22px;
   }
 
   .button {

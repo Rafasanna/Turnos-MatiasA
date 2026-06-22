@@ -23,7 +23,8 @@ export default function Hero() {
     {
       src: heroImages.logo,
       alt: "Katena entrenamiento postural y fuerza",
-      fit: "contain"
+      fit: "contain",
+      variant: "brand"
     },
     {
       src: heroImages.kstrech,
@@ -44,6 +45,7 @@ export default function Hero() {
 
   const visibleSlides = slides.filter((slide) => !failedImages.includes(slide.src));
   const [currentSlide, setCurrentSlide] = useState(0);
+  const isBrandSlide = visibleSlides[currentSlide]?.variant === "brand";
 
   useEffect(() => {
     if (visibleSlides.length <= 1) {
@@ -83,19 +85,32 @@ export default function Hero() {
 
         <div className="hero-visual" aria-label="Katena - Entrenamiento postural y fuerza">
           <div className="hero-image-composition">
-            <div className="hero-photo-card">
+            <div className={`hero-photo-card ${isBrandSlide ? "hero-photo-card-brand" : ""}`}>
               {visibleSlides.length > 0 ? (
                 visibleSlides.map((slide, index) => (
                   <div
-                    className={`hero-carousel-slide ${index === currentSlide ? "active" : ""}`}
+                    className={`hero-carousel-slide ${slide.variant === "brand" ? "hero-carousel-slide-brand" : ""} ${index === currentSlide ? "active" : ""}`}
                     key={slide.src}
                   >
-                    <img
-                      src={slide.src}
-                      alt={slide.alt}
-                      className={`hero-photo hero-photo-${slide.fit}`}
-                      onError={() => markImageFailed(slide.src)}
-                    />
+                    {slide.variant === "brand" ? (
+                      <div className="hero-brand-slide">
+                        <div className="hero-brand-image-frame">
+                          <img
+                            src={slide.src}
+                            alt={slide.alt}
+                            className="hero-brand-image"
+                            onError={() => markImageFailed(slide.src)}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      <img
+                        src={slide.src}
+                        alt={slide.alt}
+                        className={`hero-photo hero-photo-${slide.fit}`}
+                        onError={() => markImageFailed(slide.src)}
+                      />
+                    )}
                   </div>
                 ))
               ) : (
