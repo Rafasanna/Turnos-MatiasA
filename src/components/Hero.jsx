@@ -14,7 +14,7 @@ export default function Hero() {
 
   const heroImages = {
     logo: "/images/katena-logo-card.png",
-    heroLogo: "/images/katena-hero-logo.png",
+    kstrech: "/images/katena-hero-kstrech.png",
     ambiente1: "/images/katena-hero-ambiente-1.jpg",
     ambiente2: "/images/katena-hero-ambiente-2.jpg"
   };
@@ -26,9 +26,9 @@ export default function Hero() {
       fit: "contain"
     },
     {
-      src: heroImages.heroLogo,
-      alt: "Logo de Katena",
-      fit: "contain"
+      src: heroImages.kstrech,
+      alt: "Entrenamiento K-Stretch en Katena",
+      fit: "cover"
     },
     {
       src: heroImages.ambiente1,
