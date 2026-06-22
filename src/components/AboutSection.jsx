@@ -59,7 +59,7 @@ export default function AboutSection() {
   const slides = [
     {
       src: "/images/katena-banner-equipamiento.png",
-      alt: "Equipamiento de entrenamiento postural y fuerza en Katena"
+      alt: "Equipamiento de entrenamiento postural y fuerza en KATENA"
     }
   ];
 
@@ -128,9 +128,9 @@ export default function AboutSection() {
     <section className="section split-section" id="katena" ref={sectionRef}>
       <SectionTitle
         className="about-reveal"
-        eyebrow="Qué es Katena"
+        eyebrow="Qué es KATENA"
         title="No somos un gimnasio tradicional."
-        text="Katena es un centro especializado en entrenamiento postural y de fuerza."
+        text="KATENA es un centro especializado en entrenamiento postural y de fuerza."
       />
       <div className="text-panel">
         <p className="about-reveal">
@@ -163,7 +163,7 @@ export default function AboutSection() {
         className="about-reveal wide-title"
         eyebrow="El espacio"
         title="Un entorno preparado para entrenar con cuidado"
-        text="Katena cuenta con un espacio ordenado, limpio y equipado para clases guiadas, con normas claras de convivencia, higiene y uso del material."
+        text="KATENA cuenta con un espacio ordenado, limpio y equipado para clases guiadas, con normas claras de convivencia, higiene y uso del material."
       />
       <div className="wide-image carrusel-container">
         <div className="carrusel-track">

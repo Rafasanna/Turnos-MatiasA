@@ -11,11 +11,11 @@ export default function ContactSection() {
             <div className="footer-brand">
               <Image 
                 src="/assets/logo-katena.jpg" 
-                alt="Logo Katena" 
+                alt="Logo KATENA" 
                 width={48} 
                 height={48} 
               />
-              <span>Katena</span>
+              <span>KATENA</span>
             </div>
             <p className="footer-tagline">
               Acompañamiento personalizado • CABA
@@ -91,7 +91,7 @@ export default function ContactSection() {
         </div>
 
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Katena. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} KATENA. Todos los derechos reservados.</p>
           <a className="footer-credit" href={developerWhatsappUrl()} target="_blank" rel="noopener noreferrer">
             Diseño &amp; desarrollo web · Rafaela Sanna
           </a>
@@ -101,13 +101,13 @@ export default function ContactSection() {
           <details>
             <summary>Términos y condiciones</summary>
             <p>
-              La web es informativa y permite solicitar orientación sobre las propuestas de Katena. Horarios, cupos y actividades pueden modificarse. La coordinación inicial se realiza por WhatsApp y la gestión de clases puede organizarse mediante Crossfy. Las clases no reemplazan una consulta médica. Ante lesiones, dolor o condiciones particulares, la persona debe consultar con un profesional de salud.
+              La web es informativa y permite solicitar orientación sobre las propuestas de KATENA. Horarios, cupos y actividades pueden modificarse. La coordinación inicial se realiza por WhatsApp y la gestión de clases puede organizarse mediante Crossfy. Las clases no reemplazan una consulta médica. Ante lesiones, dolor o condiciones particulares, la persona debe consultar con un profesional de salud.
             </p>
           </details>
           <details>
             <summary>Política de Privacidad</summary>
             <p>
-              En Katena cuidamos la privacidad de quienes visitan este sitio y se comunican para consultar por las actividades.
+              En KATENA cuidamos la privacidad de quienes visitan este sitio y se comunican para consultar por las actividades.
             </p>
             <p>
               Podemos solicitar datos básicos como nombre, teléfono, actividad de interés y mensaje, únicamente para responder consultas y brindar información sobre las actividades disponibles.
@@ -125,7 +125,7 @@ export default function ContactSection() {
               Este sitio puede incluir enlaces a plataformas externas como WhatsApp, Instagram o Google Maps, que cuentan con sus propias políticas de privacidad.
             </p>
             <p>
-              Katena podrá actualizar esta política cuando sea necesario.
+              KATENA podrá actualizar esta política cuando sea necesario.
             </p>
           </details>
         </div>

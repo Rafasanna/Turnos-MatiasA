@@ -123,7 +123,7 @@ export default function AudienceSection() {
   return (
     <section className="section audience-section" ref={sectionRef}>
       <SectionTitle
-        eyebrow="Para quién es Katena"
+        eyebrow="Para quién es KATENA"
         title="Entrenamiento guiado para objetivos reales"
       />
       <div

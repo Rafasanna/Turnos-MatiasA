@@ -11,8 +11,8 @@ export default function ProfessionalSection() {
       <div className="professional-content">
         <SectionTitle
           eyebrow="Profesional a cargo"
-          title="Quién está detrás de Katena"
-          text="Soy Matías Aramburu, profesor y fundador de Katena. Acompaño a cada persona a mejorar su postura, ganar fuerza y moverse con más confianza, respetando sus tiempos, objetivos y necesidades."
+          title="Quién está detrás de KATENA"
+          text="Soy Matías Aramburu, profesor y fundador de KATENA. Acompaño a cada persona a mejorar su postura, ganar fuerza y moverse con más confianza, respetando sus tiempos, objetivos y necesidades."
         />
       </div>
 
@@ -20,7 +20,7 @@ export default function ProfessionalSection() {
         {!imgFailed ? (
           <img
             src="/images/matias-quien-soy.png"
-            alt="Matías Aramburu, profesor y fundador de Katena"
+            alt="Matías Aramburu, profesor y fundador de KATENA"
             className="professional-image"
             onError={() => setImgFailed(true)}
           />
@@ -28,7 +28,7 @@ export default function ProfessionalSection() {
           <div className="portrait-placeholder">
             <span aria-hidden="true">MA</span>
             <strong>Matías Aramburu</strong>
-            <p>Profesor y fundador de Katena</p>
+            <p>Profesor y fundador de KATENA</p>
           </div>
         )}
       </div>

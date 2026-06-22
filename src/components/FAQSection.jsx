@@ -26,7 +26,7 @@ export default function FAQSection() {
                 </a>
               </div>
             ) : null}
-            {item.question === "¿Dónde está ubicado Katena?" ? (
+            {item.question === "¿Dónde está ubicado KATENA?" ? (
               <div className="faq-actions">
                 <a className="button primary faq-button" href={contact.mapsUrl} target="_blank" rel="noopener noreferrer">
                   Ver ubicación

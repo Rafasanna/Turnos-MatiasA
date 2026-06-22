@@ -25,7 +25,7 @@ export default function KStretchSection() {
         />
 
         <p className="kstretch-description">
-          En Katena, cada clase se realiza con consignas claras, acompañamiento profesional y progresiones adaptadas al punto de partida de cada persona.
+          En KATENA, cada clase se realiza con consignas claras, acompañamiento profesional y progresiones adaptadas al punto de partida de cada persona.
         </p>
 
         <div className="kstretch-benefits-wrapper">
@@ -54,7 +54,7 @@ export default function KStretchSection() {
         {!imgFailed ? (
           <img
             src="/images/k-stretch-sala.png"
-            alt="Sala de K-Stretch® en Katena"
+            alt="Sala de K-Stretch® en KATENA"
             className="kstretch-image"
             onError={() => setImgFailed(true)}
           />

@@ -38,7 +38,7 @@ export default function SplashScreen() {
   }
 
   return (
-    <div className={`splash-screen${isExiting ? " is-exiting" : ""}`} aria-label="Katena">
+    <div className={`splash-screen${isExiting ? " is-exiting" : ""}`} aria-label="KATENA">
       <div className="splash-brand">
         <Image
           className="splash-logo"
@@ -48,7 +48,7 @@ export default function SplashScreen() {
           height={104}
           priority
         />
-        <span>Katena</span>
+        <span>KATENA</span>
       </div>
     </div>
   );

@@ -22,23 +22,23 @@ export default function Hero() {
   const slides = [
     {
       src: heroImages.logo,
-      alt: "Katena entrenamiento postural y fuerza",
+      alt: "KATENA entrenamiento postural y fuerza",
       fit: "contain",
       variant: "brand"
     },
     {
       src: heroImages.kstrech,
-      alt: "Entrenamiento K-Stretch en Katena",
+      alt: "Entrenamiento K-Stretch en KATENA",
       fit: "cover"
     },
     {
       src: heroImages.ambiente1,
-      alt: "Espacio de entrenamiento de Katena",
+      alt: "Espacio de entrenamiento de KATENA",
       fit: "cover"
     },
     {
       src: heroImages.ambiente2,
-      alt: "Sala de trabajo postural en Katena",
+      alt: "Sala de trabajo postural en KATENA",
       fit: "cover"
     }
   ];
@@ -78,12 +78,12 @@ export default function Hero() {
               Consultar
             </a>
             <a className="button ghost" href="#katena">
-              Sobre Katena
+              Sobre KATENA
             </a>
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Katena - Entrenamiento postural y fuerza">
+        <div className="hero-visual" aria-label="KATENA - Entrenamiento postural y fuerza">
           <div className="hero-image-composition">
             <div className={`hero-photo-card ${isBrandSlide ? "hero-photo-card-brand" : ""}`}>
               {visibleSlides.length > 0 ? (
@@ -116,7 +116,7 @@ export default function Hero() {
               ) : (
                 <div className="hero-photo-placeholder">
                   <span aria-hidden="true">K</span>
-                  <strong>Katena</strong>
+                  <strong>KATENA</strong>
                   <p>Entrenamiento postural y fuerza</p>
                 </div>
               )}

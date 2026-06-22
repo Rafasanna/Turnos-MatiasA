@@ -47,9 +47,9 @@ export default function Header() {
         />
       ) : null}
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Ir al inicio de Katena">
+        <a className="brand" href="#inicio" aria-label="Ir al inicio de KATENA">
           <Image src="/assets/logo-katena.jpg" alt="" width={44} height={44} priority />
-          <span>Katena</span>
+          <span>KATENA</span>
         </a>
         <div className="header-navigation">
           <nav className="desktop-nav" aria-label="Navegacion principal">

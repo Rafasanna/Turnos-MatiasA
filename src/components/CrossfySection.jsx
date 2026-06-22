@@ -15,7 +15,7 @@ export default function CrossfySection() {
         <SectionTitle
           eyebrow="Cómo gestionamos las clases"
           title="Primero conversamos con vos"
-          text="En Katena utilizamos Crossfy para organizar horarios, reservas y asistencia. Antes de empezar, te pedimos que nos escribas por WhatsApp para orientarte, contarte qué propuesta se adapta mejor a vos y acompañarte en el primer paso dentro de la app."
+          text="En KATENA utilizamos Crossfy para organizar horarios, reservas y asistencia. Antes de empezar, te pedimos que nos escribas por WhatsApp para orientarte, contarte qué propuesta se adapta mejor a vos y acompañarte en el primer paso dentro de la app."
         />
         <p className="crossfy-note">
           Primero te orientamos por WhatsApp; después te guiamos con Crossfy.
@@ -40,14 +40,14 @@ export default function CrossfySection() {
         {!imgFailed ? (
           <img
             src="/images/katena/crossfy-katena.jpg"
-            alt="Crossfy y Katena"
+            alt="Crossfy y KATENA"
             className="crossfy-image"
             onError={() => setImgFailed(true)}
           />
         ) : (
           <div className="crossfy-placeholder">
             <span aria-hidden="true">+</span>
-            <strong>Imagen Crossfy + Katena</strong>
+            <strong>Imagen Crossfy + KATENA</strong>
             <p>
               Ubicación preparada: <code>public/images/katena/crossfy-katena.jpg</code>.
             </p>
