@@ -468,25 +468,26 @@ h3 {
 .hero-brand-image-frame {
   position: relative;
   z-index: 1;
-  width: min(86%, 300px);
-  aspect-ratio: 1;
+  width: min(92%, 330px);
+  min-height: 58%;
   display: grid;
   place-items: center;
-  overflow: hidden;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.48);
-  box-shadow: 0 22px 54px rgba(18, 58, 80, 0.14);
+  overflow: visible;
+  border-radius: 26px;
+  background: transparent;
+  box-shadow: none;
   transform: translateY(8px) scale(0.96);
   transition: transform 760ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .hero-brand-image {
-  width: 122%;
-  height: 122%;
-  max-width: none;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
   object-position: center;
-  transform: scale(1.08);
+  filter: drop-shadow(0 18px 34px rgba(18, 58, 80, 0.12));
+  mix-blend-mode: multiply;
 }
 
 .hero-carousel-slide.active .hero-brand-image-frame {
@@ -1587,7 +1588,8 @@ h3 {
   }
 
   .hero-brand-image-frame {
-    width: min(78%, 230px);
+    width: min(86%, 245px);
+    min-height: 54%;
     border-radius: 24px;
   }
 
@@ -1712,7 +1714,8 @@ h3 {
   }
 
   .hero-brand-image-frame {
-    width: min(74%, 210px);
+    width: min(84%, 220px);
+    min-height: 50%;
     border-radius: 22px;
   }
 
