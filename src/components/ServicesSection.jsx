@@ -41,8 +41,9 @@ export default function ServicesSection() {
               </div>
               <h3>{activity.title}</h3>
               <p>{activity.description}</p>
-              <a className="activity-booking" href={whatsappUrl(activity.whatsappMessage)} target="_blank" rel="noopener noreferrer">
-                {activity.ctaLabel}
+              <a className="btn-primary-with-arrow activity-booking" href={whatsappUrl(activity.whatsappMessage)} target="_blank" rel="noopener noreferrer">
+                <span>{activity.ctaLabel}</span>
+                <span className="button-arrow" aria-hidden="true">→</span>
               </a>
             </div>
           </article>

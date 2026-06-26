@@ -74,7 +74,7 @@ export default function Header() {
             </summary>
             <nav aria-label="Navegacion mobile">
               {navItems.map((item) => (
-                <a href={item.href} key={item.href}>{item.label}</a>
+                <a href={item.href} key={item.href} onClick={() => setIsMenuOpen(false)}>{item.label}</a>
               ))}
             </nav>
           </details>

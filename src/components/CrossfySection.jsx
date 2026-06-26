@@ -21,8 +21,9 @@ export default function CrossfySection() {
           Primero te orientamos por WhatsApp; después te guiamos con Crossfy.
         </p>
         <div className="inline-actions">
-          <a className="button primary" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
-            Hablar con Matías
+          <a className="button primary btn-primary-with-arrow" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+            <span>Hablar con Matías</span>
+            <span className="button-arrow" aria-hidden="true">→</span>
           </a>
           <a
             className={`button ghost${hasVideoUrl ? "" : " is-disabled"}`}

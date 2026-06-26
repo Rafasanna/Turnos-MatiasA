@@ -2309,6 +2309,75 @@ h3 {
   box-shadow: 0 6px 16px rgba(20, 57, 79, 0.2);
 }
 
+.btn-primary-with-arrow {
+  min-height: 44px;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--white);
+  background: var(--blue);
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.btn-primary-with-arrow:hover,
+.btn-primary-with-arrow:focus-visible,
+.button.btn-primary-with-arrow:hover,
+.button.btn-primary-with-arrow:focus-visible {
+  color: var(--white);
+  background: var(--blue-dark);
+  box-shadow: 0 10px 24px rgba(20, 57, 79, 0.18);
+  transform: translateX(2px);
+}
+
+.btn-primary-with-arrow .button-arrow {
+  font-size: 1.05em;
+  line-height: 1;
+  transition: transform 200ms ease;
+}
+
+.btn-primary-with-arrow:hover .button-arrow,
+.btn-primary-with-arrow:focus-visible .button-arrow {
+  transform: translateX(2px);
+}
+
+.activity-booking.btn-primary-with-arrow {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 0.94rem;
+  font-weight: 500;
+}
+
+.footer-cta-btn.btn-primary-with-arrow {
+  min-height: 44px;
+  width: fit-content;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 0.94rem;
+  font-weight: 500;
+}
+
+.footer-cta-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 /* Carousel styles in AboutSection */
 .carrusel-container {
   position: relative;
@@ -2490,6 +2559,22 @@ h3 {
   }
   .carrusel-control.next {
     right: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-primary-with-arrow,
+  .activity-booking.btn-primary-with-arrow,
+  .footer-cta-btn.btn-primary-with-arrow {
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 0.88rem;
+  }
+
+  .footer-cta-btn.btn-primary-with-arrow {
+    max-width: 360px;
   }
 }
 

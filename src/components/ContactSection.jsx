@@ -84,8 +84,10 @@ export default function ContactSection() {
               Escribinos y te orientamos según tu objetivo.
             </p>
             
-            <a className="button primary footer-cta-btn" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
-              Consultar por WhatsApp
+            <a className="button primary btn-primary-with-arrow footer-cta-btn" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+              <span className="footer-cta-icon" aria-hidden="true">💬</span>
+              <span>Consultar por WhatsApp</span>
+              <span className="button-arrow" aria-hidden="true">→</span>
             </a>
           </div>
         </div>

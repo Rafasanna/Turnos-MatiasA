@@ -41,8 +41,9 @@ export default function KStretchSection() {
         </div>
 
         <div className="inline-actions">
-          <a className="button primary" href={kstretchWhatsappUrl()} target="_blank" rel="noopener noreferrer">
-            Consultar por K-Stretch®
+          <a className="button primary btn-primary-with-arrow" href={kstretchWhatsappUrl()} target="_blank" rel="noopener noreferrer">
+            <span>Consultar por K-Stretch®</span>
+            <span className="button-arrow" aria-hidden="true">→</span>
           </a>
           <a className="button ghost" href="#crossfy">
             Cómo reservar
