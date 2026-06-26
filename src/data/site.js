@@ -27,7 +27,7 @@ export const developerContact = {
 export const siteInfo = {
   brandName: "KATENA",
   professionalName: "Prof. Matías Aramburu",
-  heroEyebrow: "Entrenamiento postural y fuerza",
+  heroEyebrow: "ENTRENAMIENTO POSTURAL Y FUERZA",
   heroTitle: "KATENA",
   heroText:
     "Un espacio profesional para construir un cuerpo fuerte, móvil y funcional, con guía personalizada, técnica cuidada y un método basado en biomecánica, postura y movimiento consciente."

@@ -58,8 +58,21 @@ export default function AboutSection() {
 
   const slides = [
     {
-      src: "/images/katena-banner-equipamiento.png",
-      alt: "Equipamiento de entrenamiento postural y fuerza en KATENA"
+      src: "/images/katena-logo-card.png",
+      alt: "Logo de KATENA entrenamiento postural y fuerza",
+      fit: "contain"
+    },
+    {
+      src: "/images/katena-hero-kstrech.png",
+      alt: "Entrenamiento K-Stretch en KATENA"
+    },
+    {
+      src: "/images/katena-hero-ambiente-1.jpg",
+      alt: "Espacio de entrenamiento de KATENA"
+    },
+    {
+      src: "/images/katena-hero-ambiente-2.jpg",
+      alt: "Sala de trabajo postural en KATENA"
     }
   ];
 
@@ -137,6 +150,52 @@ export default function AboutSection() {
           No alquilamos máquinas ni vendemos horas de gimnasio: ofrecemos un sistema de educación y acondicionamiento corporal guiado por profesionales, pensado para mejorar la postura, la fuerza, la movilidad y la relación de cada persona con su cuerpo.
         </p>
       </div>
+
+      <div className="wide-image about-gallery">
+        <div className="carrusel-container">
+          <div className="carrusel-track">
+            {visibleSlides.length > 0 ? (
+              visibleSlides.map((slide, index) => (
+                <div
+                  key={slide.src}
+                  className={`carrusel-slide ${index === currentSlide ? "active" : ""}`}
+                >
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    className={`carrusel-image ${slide.fit === "contain" ? "carrusel-image-contain" : ""}`}
+                    onError={() => markSlideFailed(slide.src)}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="carrusel-slide active">
+                <div className="space-photo-fallback">
+                  <span aria-hidden="true">+</span>
+                  <strong>Imagen próximamente</strong>
+                  <p>
+                    Rutas preparadas para las imágenes institucionales de KATENA.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {visibleSlides.length > 1 ? (
+            <div className="carrusel-indicators">
+              {visibleSlides.map((slide, index) => (
+                <button
+                  key={slide.src}
+                  className={`carrusel-dot ${index === currentSlide ? "active" : ""}`}
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Ir a la imagen ${index + 1}`}
+                />
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </div>
+
       <SectionTitle
         className="about-reveal wide-title"
         eyebrow="Nuestra forma de trabajar"
@@ -157,55 +216,6 @@ export default function AboutSection() {
             <p>{item.description}</p>
           </article>
         ))}
-      </div>
-      
-      <SectionTitle
-        className="about-reveal wide-title"
-        eyebrow="El espacio"
-        title="Un entorno preparado para entrenar con cuidado"
-        text="KATENA cuenta con un espacio ordenado, limpio y equipado para clases guiadas, con normas claras de convivencia, higiene y uso del material."
-      />
-      <div className="wide-image carrusel-container">
-        <div className="carrusel-track">
-          {visibleSlides.length > 0 ? (
-            visibleSlides.map((slide, index) => (
-              <div
-                key={slide.src}
-                className={`carrusel-slide ${index === currentSlide ? "active" : ""}`}
-              >
-                <img
-                  src={slide.src}
-                  alt={slide.alt}
-                  className="carrusel-image"
-                  onError={() => markSlideFailed(slide.src)}
-                />
-              </div>
-            ))
-          ) : (
-            <div className="carrusel-slide active">
-              <div className="space-photo-fallback">
-                <span aria-hidden="true">+</span>
-                <strong>Imagen próximamente</strong>
-                <p>
-                  Ruta preparada: <code>/images/katena-banner-equipamiento.png</code>
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {visibleSlides.length > 1 ? (
-          <div className="carrusel-indicators">
-            {visibleSlides.map((slide, index) => (
-              <button
-                key={slide.src}
-                className={`carrusel-dot ${index === currentSlide ? "active" : ""}`}
-                onClick={() => setCurrentSlide(index)}
-                aria-label={`Ir a la imagen ${index + 1}`}
-              />
-            ))}
-          </div>
-        ) : null}
       </div>
     </section>
   );
