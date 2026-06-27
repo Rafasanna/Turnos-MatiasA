@@ -21,7 +21,7 @@ export default function AudienceSection() {
     }
 
     track.scrollTo({
-      left: slide.offsetLeft - track.offsetLeft,
+      left: slide.offsetLeft,
       behavior
     });
   };

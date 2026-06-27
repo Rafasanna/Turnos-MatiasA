@@ -9,11 +9,9 @@ export default function FAQSection() {
         {faqs.map((item) => (
           <details key={item.question}>
             <summary>{item.question}</summary>
-            {item.question === "¿Qué es K-Stretch?" ? (
+            {item.question === "¿Qué es K-Stretch®?" ? (
               <p>
-                <a className="faq-inline-link" href="#kstretch">
-                  K-Stretch
-                </a>{" "}
+                <a className="faq-inline-link" href="#kstretch">K-Stretch®</a>{" "}
                 es un trabajo postural y de flexibilidad global orientado a reequilibrar cadenas musculares y miofasciales, mejorar movilidad y reducir compensaciones.
               </p>
             ) : (

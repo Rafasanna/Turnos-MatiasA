@@ -149,7 +149,7 @@ export const faqs = [
       "KATENA no alquila máquinas ni vende horas de gimnasio. Ofrece un sistema guiado por profesionales, con técnica, seguimiento y cupos controlados."
   },
   {
-    question: "¿Qué es K-Stretch?",
+    question: "¿Qué es K-Stretch®?",
     answer:
       "Es un trabajo postural y de flexibilidad global orientado a reequilibrar cadenas musculares y miofasciales, mejorar movilidad y reducir compensaciones."
   },
